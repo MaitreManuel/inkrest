@@ -2,100 +2,66 @@
 
 namespace ApiBundle\Model;
 
+use Doctrine\DBAL\Connection;
+
 class User {
     /**
-     * User id.
+     * Database connection
      *
-     * @var string
+     * @var \Doctrine\DBAL\Connection
      */
-    private $id;
+    private $db;
 
     /**
-     * User firstname.
+     * Constructor
      *
-     * @var string
+     * @param \Doctrine\DBAL\Connection The database connection object
      */
-    private $firstname;
+    public function __construct(Connection $db) {
+        $this->db = $db;
+    }
 
     /**
-     * User lastname.
+     * Creates an User object based on a DB row.
      *
-     * @var string
+     * @param array $row The DB row containing User data.
+     * @return \ApiBundle\Model\User
      */
-    private $lastname;
+    private function buildUser(array $row) {
+        $user = array(
+            'id' => $row['id'],
+            'firstname' => $row['firstname'],
+            'lastname' => $row['lastname'],
+            'mail' => $row['mail'],
+            'password' => $row['password'],
+            'is_admin' => $row['is_admin'],
+        );
 
-    /**
-     * User mail.
-     *
-     * @var string
-     */
-    private $mail;
-
-    /**
-     * User password.
-     *
-     * @var string
-     */
-    private $password;
-
-    /**
-     * User is_admin.
-     *
-     * @var string
-     */
-    private $is_admin;
-
-    public function getId() {
-        return $this->$id;
+        return $user;
     }
 
-    public function setId($id) {
-        $this->$id = $id;
-        return $this;
+    public function create() {
+        $sql = "INSERT INTO user () VALUES ";
     }
 
-    public function getFirstname() {
-        return $this->$firstname;
+    public function findAll() {
+        $sql = "SELECT * FROM user";
+        $result = $this->db->fetchAll($sql);
+
+        $users = array();
+        foreach ($result as $row) {
+            $users[$row['id']] = $this->buildUser($row);
+        }
+
+        return $users;
     }
 
-    public function setFirstname($firstname) {
-        $this->$firstname = $firstname;
-        return $this;
-    }
+    public function findById($id) {
+        $sql = "SELECT * FROM user WHERE id = ". $id;
+        $result = $this->db->fetchAssoc($sql);
 
-    public function getLastname() {
-        return $this->$lastname;
-    }
+        $user = $this->buildUser($result);
 
-    public function setLastname($lastname) {
-        $this->$lastname = $lastname;
-        return $this;
-    }
-
-    public function getMail() {
-        return $this->$mail;
-    }
-
-    public function setMail($mail) {
-        $this->$mail = $mail;
-        return $this;
-    }
-
-    public function getPassword() {
-        return $this->$password;
-    }
-
-    public function setPassword($password) {
-        $this->$password = $password;
-        return $this;
-    }
-
-    public function getIsAdmin() {
-        return $this->$is_admin;
-    }
-
-    public function setIsAdmin($is_admin) {
-        $this->$is_admin = $is_admin;
-        return $this;
+        return $user;
     }
 }
