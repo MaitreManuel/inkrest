@@ -3,6 +3,7 @@
 namespace ApiBundle\Model;
 
 use Doctrine\DBAL\Connection;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class User {
     /**
@@ -40,17 +41,24 @@ class User {
         return $user;
     }
 
-    public function create() {
-        $sql = "INSERT INTO user () VALUES ";
+    public function create($firstname, $lastname, $mail, $password, $is_admin) {
+        $sql = "INSERT INTO user (firstname, lastname, mail, password, is_admin)
+                VALUES ". $firstname .", ". $lastname .", ". $mail .", ". $password .", ". $is_admin;
+
+        $result = $this->db->insert($sql);
     }
 
     public function findAll() {
         $sql = "SELECT * FROM user";
         $result = $this->db->fetchAll($sql);
 
-        $users = array();
-        foreach ($result as $row) {
-            $users[$row['id']] = $this->buildUser($row);
+        if(!$result) {
+            throw new NotFoundHttpException("User with id ". $id ." not existing");
+        } else {
+            $users = array();
+            foreach ($result as $row) {
+                $users[$row['id']] = $this->buildUser($row);
+            }
         }
 
         return $users;
@@ -60,7 +68,11 @@ class User {
         $sql = "SELECT * FROM user WHERE id = ". $id;
         $result = $this->db->fetchAssoc($sql);
 
-        $user = $this->buildUser($result);
+        if(!$result) {
+            throw new NotFoundHttpException("User with id ". $id ." not existing");
+        } else {
+            $user = $this->buildUser($result);
+        }
 
         return $user;
     }

@@ -10,8 +10,7 @@
     "build:stats": "webpack --profile --json > webpack-stats.json",
     "build:watch": "webpack --watch",
     "build:dev": "webpack",
-    "build": "NODE_ENV=production webpack -p",
-    "serve": "webpack-dev-server --https --content-base=web/"
+    "build": "NODE_ENV=production webpack -p"
   },
   "dependencies": {
     "bootstrap": "^4.0.0-beta",
