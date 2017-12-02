@@ -93,5 +93,6 @@ Reboot your computer and test [PHPMyAdmin http://127.0.0.1/phpmyadmin/](http://1
 
 Then reboot computer and test [PHPMyAdmin http://127.0.0.1/phpmyadmin/](http://127.0.0.1/phpmyadmin/)
 
+### 5. Configuration
 
 Now let's proceed [configuration](https://github.com/MaitreManuel/inkrest/blob/master/docs/CONFIGURATION.md) !
