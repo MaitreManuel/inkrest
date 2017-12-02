@@ -92,3 +92,6 @@ Reboot your computer and test [PHPMyAdmin http://127.0.0.1/phpmyadmin/](http://1
 `sudo apt install php-mbstring php-gettext`
 
 Then reboot computer and test [PHPMyAdmin http://127.0.0.1/phpmyadmin/](http://127.0.0.1/phpmyadmin/)
+
+
+Now let's proceed [configuration](https://github.com/MaitreManuel/inkrest/blob/master/docs/CONFIGURATION.md) !
