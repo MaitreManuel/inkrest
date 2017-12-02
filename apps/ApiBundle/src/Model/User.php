@@ -6,7 +6,8 @@ use Doctrine\DBAL\Connection;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\RuntimeException;
 
-use ApiBundle\Service\HashPassword;
+use ApiBundle\Service\Encoder;
+use ApiBundle\Service\Response;
 
 class User {
     /**
@@ -19,18 +20,26 @@ class User {
     /**
      * Service hash password
      *
-     * @var \ApiBundle\Service\HashPassword
+     * @var \ApiBundle\Service\Encoder
      */
-    private $hash;
+    private $encode;
+
+    /**
+     * Service server response
+     *
+     * @var \ApiBundle\Service\Response
+     */
+    private $response;
 
     /**
      * Constructor
      *
      * @param \Doctrine\DBAL\Connection The database connection object
      */
-    public function __construct(Connection $db, HashPassword $hash) {
+    public function __construct(Connection $db) {
         $this->db = $db;
-        $this->hash = $hash;
+        $this->encode = new Encoder();
+        $this->response = new Response();
     }
 
     /**
@@ -63,7 +72,7 @@ class User {
         if(!isset($mail)) {
             throw new RuntimeException("Cannot take empty or null value for the \"mail\" parameter");
         } else {
-            $sql = "SELECT id, mail FROM user WHERE mail = '". $mail ."'";
+            $sql = "SELECT * FROM user WHERE mail = '". $mail ."'";
             $result = $this->db->fetchAssoc($sql);
         }
 
@@ -73,6 +82,31 @@ class User {
     public function connect($mail, $password) {
         $token = "";
 
+        if(!isset($mail)) {
+            $token = $this->response->bad_request("Cannot take empty or null value for the \"mail\" parameter");
+        } else if(!isset($password)) {
+            $token = $this->response->bad_request("Cannot take empty or null value for the \"password\" parameter");
+        } else {
+            $user = $this->findByMail($mail);
+            $hash_password_given = $this->encode->testPassword($password, $user['salt']);
+
+            if($user) {
+                if(strcmp($hash_password_given, $user['hashedPassword']) === 0) {
+                    $token = $this->encode->generateToken($mail);
+                    $data = array(
+                        'token' => $token
+                    );
+                    $identifier = array(
+                        'mail' => $mail
+                    );
+                    $this->update($data, $identifier);
+                } else {
+                    $token = $this->response->bad_request("Password not match");
+                }
+            } else {
+                $token = $this->response->not_found("User ". $mail ." not found");
+            }
+        }
 
         return $token;
     }
@@ -82,19 +116,25 @@ class User {
         $if_exist = $this->findByMail($mail);
 
         if($if_exist) {
-            throw new RuntimeException("User already exist !");
+            $result = $this->response->bad_request("User already exist");
         } else if(!isset($firstname)) {
-            throw new RuntimeException("Cannot take empty or null value for the \"firstname\" parameter");
+            $result = $this->response->bad_request("Cannot take empty or null value for the \"firstname\" parameter");
         } else if(!isset($lastname)) {
-            throw new RuntimeException("Cannot take empty or null value for the \"lastname\" parameter");
+            $result = $this->response->bad_request("Cannot take empty or null value for the \"lastname\" parameter");
         } else if(!isset($password)) {
-            throw new RuntimeException("Cannot take empty or null value for the \"password\" parameter");
+            $result = $this->response->bad_request("Cannot take empty or null value for the \"password\" parameter");
         } else if(!isset($is_admin)) {
-            throw new RuntimeException("Cannot take empty or null value for the \"is_admin\" parameter");
+            $result = $this->response->bad_request("Cannot take empty or null value for the \"is_admin\" parameter");
         } else {
-            \var_dump('here');die();
-            $encrypt_pwd = $this->hash->hashPassword($password);
-            $values = array('firstname' => $firstname, 'lastname' => $lastname, 'mail' => $mail, 'hashedPassword' => $encrypt_pwd['hashedPassword'], 'salt' => $encrypt_pwd['salt'], 'is_admin' => $is_admin);
+            $encode_pwd = $this->encode->hashPassword($password);
+            $values = array(
+                'firstname' => $firstname,
+                'lastname' => $lastname,
+                'mail' => $mail,
+                'hashedPassword' => $encode_pwd['hashedPassword'],
+                'salt' => $encode_pwd['salt'],
+                'is_admin' => $is_admin
+            );
             $result = $this->db->insert('user', $values);
         }
 
@@ -108,7 +148,7 @@ class User {
         $result = $this->db->fetchAll($sql);
 
         if(!$result) {
-            throw new NotFoundHttpException("Users not existing");
+            $users = $this->response->bad_request("Users not existing");
         } else {
             $users = array();
             foreach ($result as $row) {
@@ -123,18 +163,32 @@ class User {
         $user = "";
 
         if(!isset($id)) {
-            throw new RuntimeException("Cannot take empty or null value for the \"id\" parameter");
+            $user = $this->response->bad_request("Cannot take empty or null value for the \"id\" parameter");
         } else {
             $sql = "SELECT id, firstname, lastname, mail, is_admin FROM user WHERE id = ". $id;
             $result = $this->db->fetchAssoc($sql);
 
             if(!$result) {
-                throw new NotFoundHttpException("User with id ". $id ." not existing");
+                $user = $this->response->not_found("User with id ". $id ." not existing");
             } else {
                 $user = $this->buildUser($result);
             }
         }
 
         return $user;
+    }
+
+    public function update($data, $identifier) {
+        $result = "";
+
+        if(!isset($data)) {
+            throw new RuntimeException("Cannot take empty or null value for the \"data\" parameter");
+        } else if(!isset($identifier)) {
+            throw new RuntimeException("Cannot take empty or null value for the \"identifier\" parameter");
+        } else {
+            $result = $this->db->update('user', $data, $identifier);
+        }
+
+        return $result;
     }
 }
