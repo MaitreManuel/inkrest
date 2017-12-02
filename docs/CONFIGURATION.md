@@ -30,7 +30,7 @@ Edit this file :
 
 `sudo nano apache2.conf`
 
-Replace `Directory /var/www` configuration by this line
+Replace `Directory /var/www` configuration by this lines :
 
 ```
 <Directory /var/www/>
@@ -44,13 +44,15 @@ Replace `Directory /var/www` configuration by this line
 
 In this step we will create virtual URL to serve all routes in this project.
 
-Go in this folder :
+Go to this folder :
 
 `cd /etc/apache2/sites-available`
 
 And create 3 files :
 
 `sudo touch inkrest.conf api.inkrest.conf admin.inkrest.conf`
+
+Then follow this file edit :
 
 `sudo nano inkrest.conf`, write :
 ```
@@ -103,7 +105,7 @@ And finally :
 
 `sudo nano /etc/hosts`
 
-In your hosts file, add :
+In your `hosts` file, add :
 ```
 127.0.0.1   api.inkrest.fr
 127.0.0.1   admin.inkrest.fr
