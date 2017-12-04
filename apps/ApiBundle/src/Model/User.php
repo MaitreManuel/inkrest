@@ -94,7 +94,8 @@ class User {
                 if(strcmp($hash_password_given, $user['hashedPassword']) === 0) {
                     $token = $this->encode->generateToken($mail);
                     $data = array(
-                        'token' => $token
+                        'token' => $token,
+                        'token_life' => date('Y-m-d h:i:s')
                     );
                     $identifier = array(
                         'mail' => $mail
