@@ -27,7 +27,7 @@ $app->get('/', function () {
             <tr>
                 <td>GET</td>
                 <td>/users/{id}</td>
-                <td><a href="http://api.inkrest.fr/users/4" target="_blank">&#10138;</a></td>
+                <td><a href="http://api.inkrest.fr/users/7" target="_blank">&#10138;</a></td>
             </tr>
             <tr>
                 <td>POST</td>
@@ -61,28 +61,28 @@ $app->get('/users/{id}', function ($id) use ($app) {
 });
 
 $app->post('/users/create', function (Request $request) use ($app) {
-    // $response = "";
-    // $asker = $request->get('asker');
-    // $asker_token = $request->get('asker_token');
-    //
-    // if(!empty($asker) && !empty($asker_token)) {
-    //     $access = $app['dao.user']->can_access($asker, $asker_token);
-    //
-    //     if(strcmp($access['status'], "success") === 0) {
-    //
-    //     } else {
-    //         $response = $access;
-    //     }
-    // } else {
-    //     throw new RuntimeException("Cannot take empty or null value for the asker \"mail\" or asker \"token\" parameter");
-    // }
-    $firstname = $request->get('firstname');
-    $lastname = $request->get('lastname');
-    $mail = $request->get('mail');
-    $password = $request->get('password');
-    $is_admin = $request->get('is_admin');
+    $response = "";
+    $asker = $request->get('asker');
+    $asker_token = $request->get('asker_token');
 
-    $response = $app['dao.user']->create($firstname, $lastname, $mail, $password, $is_admin);
+    if(!empty($asker) && !empty($asker_token)) {
+        $access = $app['dao.user']->can_access_admin($asker, $asker_token);
+
+        if(strcmp($access['status'], "success") === 0) {
+            $firstname = $request->get('firstname');
+            $lastname = $request->get('lastname');
+            $mail = $request->get('mail');
+            $password = $request->get('password');
+            $is_admin = $request->get('is_admin');
+
+            $response = $app['dao.user']->create($firstname, $lastname, $mail, $password, $is_admin);
+        } else {
+            $response = $access;
+        }
+    } else {
+        throw new RuntimeException("Cannot take empty or null value for the asker \"mail\" or asker \"token\" parameter");
+    }
+
 
     return new JsonResponse($response);
 });
