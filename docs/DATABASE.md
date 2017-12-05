@@ -10,7 +10,7 @@ Refer to this [doc](https://github.com/MaitreManuel/inkrest/blob/master/docs/SOF
 You need to set-up a database in phpMyAdmin, so follow this instructions :
 
 * In this folder `apps/ApiBundle/db/`, you'll find this file `inkrest.sql`
-* Go to your [phpMyAdmin](http://localhost/phpmyadmin/)
+* Go to your [PHPMyAdmin](http://localhost/phpmyadmin/)
 * Click on "New databases" on left-top
 * Call it `inkrest` and choose in interclassement utf8 -> utf8_bin
 * Click on "Create"
