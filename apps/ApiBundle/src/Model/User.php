@@ -95,8 +95,17 @@ class User {
             $now = date_create(date('Y-m-d h:i:s'));
             $interval = date_diff($now, $token_date);
 
-            if(strcmp($asker_token, $token) === 0) {
+            if(strcmp($user['account_status'], "active") !== 0) {
+                $result = $this->response->unauthorized("Your account is not active, you can't make request");
+            } else if(strcmp($asker_token, $token) === 0) {
                 if(intval($interval->format('%h')) < 6) {
+                    $data = array(
+                        'token_date' => date('Y-m-d h:i:s')
+                    );
+                    $identifier = array(
+                        'mail' => $user['mail']
+                    );
+                    $this->update($data, $identifier);
                     $result = $this->response->ok("Access authorized");
                 } else {
                     $this->disconnect($mail);
@@ -124,7 +133,9 @@ class User {
          if(!empty($mail) && !empty($asker_token)) {
              $user = $this->findByMail($mail);
 
-             if(strcmp($user['is_admin'], "true") === 0) {
+             if(strcmp($user['account_status'], "active") !== 0) {
+                 $result = $this->response->unauthorized("Your account is not active, you can't make request");
+             } else if(strcmp($user['is_admin'], "true") === 0) {
                  $user = $this->findByMail($mail);
                  $token = $user['token'];
                  $token_date = date_create($user['token_date']);
@@ -133,6 +144,13 @@ class User {
 
                  if(strcmp($asker_token, $token) === 0) {
                      if(intval($interval->format('%h')) < 6) {
+                         $data = array(
+                             'token_date' => date('Y-m-d h:i:s')
+                         );
+                         $identifier = array(
+                             'mail' => $user['mail']
+                         );
+                         $this->update($data, $identifier);
                          $result = $this->response->ok("Access authorized");
                      } else {
                          $this->disconnect($mail);
@@ -162,7 +180,9 @@ class User {
             $user = $this->findByMail($mail);
             $hash_password_given = $this->encode->testPassword($password, $user['salt']);
 
-            if(!empty($user['token']) && !empty($user['token_date'])) {
+            if(strcmp($user['account_status'], "active") !== 0) {
+                $result = $this->response->unauthorized("Your account is not active, you can't make request");
+            } else if(!empty($user['token']) && !empty($user['token_date'])) {
                 $result = $this->response->teapot("I'm a teapot and I'm already connected !");
             } else if($user) {
                 if(strcmp($hash_password_given, $user['hashedPassword']) === 0) {
@@ -205,14 +225,14 @@ class User {
                 $result = $this->response->bad_request("User already exist");
             } else {
                 $encode_pwd = $this->encode->hashPassword($password);
-                // \var_dump($encode_pwd);die();
                 $values = array(
                     'firstname' => $firstname,
                     'lastname' => $lastname,
                     'mail' => $mail,
+                    'is_admin' => $is_admin,
                     'hashedPassword' => $encode_pwd['hashedPassword'],
                     'salt' => $encode_pwd['salt'],
-                    'is_admin' => $is_admin
+                    'account_status' => 'active'
                 );
                 $result = $this->db->insert('user', $values);
             }
@@ -231,8 +251,8 @@ class User {
 
             if(!empty($user_connected['token']) && !empty($user_connected['token_date'])) {
                 $data = array(
-                    'token' => '',
-                    'token_date' => ''
+                    'token' => NULL,
+                    'token_date' => NULL
                 );
                 $identifier = array(
                     'mail' => $user_connected['mail']
@@ -290,7 +310,8 @@ class User {
         } else if(empty($identifier)) {
             throw new RuntimeException("Cannot take empty or null value for the \"identifier\" parameter");
         } else {
-            $result = $this->db->update('user', $data, $identifier);
+            $this->db->update('user', $data, $identifier);
+            $result = $this->response->ok("Update successfull");
         }
 
         return $result;
