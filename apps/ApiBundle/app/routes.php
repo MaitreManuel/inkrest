@@ -115,22 +115,26 @@ $app->post('/users/disconnect', function (Request $request) use ($app) {
 $app->post('/users/update', function (Request $request) use ($app) {
     $update = "";
     $data = json_decode($request->get('data'), true);
-    $mail = $request->get('mail');
+    $asker = $request->get('mail');
     $asker_token = $request->get('asker_token');
+    $to_update = $request->get('to_update');
 
-    if(!empty($mail) && !empty($asker_token) && !empty($data)) {
-        $response = $app['dao.user']->can_access($mail, $asker_token);
-
+    if(!empty($asker) && !empty($asker_token) && !empty($data) && !empty($to_update)) {
+        if(strcmp($asker, $to_update) !== 0) {
+            $response = $app['dao.user']->can_access_admin($asker, $asker_token);
+        } else {
+            $response = $app['dao.user']->can_access($asker, $asker_token);
+        }
         if(strcmp($response['status'], "success") === 0) {
             $identifier = array(
-                'mail' => $mail
+                'mail' => $to_update
             );
             $update = $app['dao.user']->update($data, $identifier);
         } else {
             $update = $response;
         }
     } else {
-        throw new RuntimeException("Cannot take empty or null value for the asker \"mail\", asker \"token\" or data parameter");
+        throw new RuntimeException("Cannot take empty or null value for the asker \"mails\", asker \"token\" or data parameter");
     }
 
 

@@ -92,7 +92,7 @@ class User {
             $user = $this->findByMail($mail);
             $token = $user['token'];
             $token_date = date_create($user['token_date']);
-            $now = date_create(date('Y-m-d h:i:s'));
+            $now = date_create(date('Y-m-d H:i:s'));
             $interval = date_diff($now, $token_date);
 
             if(strcmp($user['account_status'], "active") !== 0) {
@@ -100,7 +100,7 @@ class User {
             } else if(strcmp($asker_token, $token) === 0) {
                 if(intval($interval->format('%h')) < 6) {
                     $data = array(
-                        'token_date' => date('Y-m-d h:i:s')
+                        'token_date' => date('Y-m-d H:i:s')
                     );
                     $identifier = array(
                         'mail' => $user['mail']
@@ -139,13 +139,18 @@ class User {
                  $user = $this->findByMail($mail);
                  $token = $user['token'];
                  $token_date = date_create($user['token_date']);
-                 $now = date_create(date('Y-m-d h:i:s'));
+                 $now = date_create(date('Y-m-d H:i:s'));
                  $interval = date_diff($now, $token_date);
+
+                 $datetime1 = new \DateTime($user['token_date']);
+                 $datetime2 = new \DateTime(date('Y-m-d H:i:s'));
+                 $interval = $datetime1->diff($datetime2);
+                 var_dump($interval->format('%h'));die();
 
                  if(strcmp($asker_token, $token) === 0) {
                      if(intval($interval->format('%h')) < 6) {
                          $data = array(
-                             'token_date' => date('Y-m-d h:i:s')
+                             'token_date' => date('Y-m-d H:i:s')
                          );
                          $identifier = array(
                              'mail' => $user['mail']
@@ -157,7 +162,7 @@ class User {
                          $result = $this->response->unauthorized("Token too old, you've been disconnected.");
                      }
                  } else {
-                     $result = $this->response->unauthorized("You need to be connected to do this action.");
+                     $result = $this->response->unauthorized("Token invalid.");
                  }
              } else {
                  $result = $this->response->unauthorized("You need administrator rights to execute this action");
@@ -189,7 +194,7 @@ class User {
                     $token = $this->encode->generateToken($mail);
                     $data = array(
                         'token' => $token,
-                        'token_date' => date('Y-m-d h:i:s')
+                        'token_date' => date('Y-m-d H:i:s')
                     );
                     $identifier = array(
                         'mail' => $mail
