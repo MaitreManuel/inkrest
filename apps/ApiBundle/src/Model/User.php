@@ -188,7 +188,16 @@ class User {
             if(strcmp($user['account_status'], "active") !== 0) {
                 $result = $this->response->unauthorized("Your account is not active, you can't make request");
             } else if(!empty($user['token']) && !empty($user['token_date'])) {
-                $result = $this->response->teapot("I'm a teapot and I'm already connected !");
+                $token_date = date_create($user['token_date']);
+                $now = date_create(date('Y-m-d H:i:s'));
+                $interval = date_diff($now, $token_date);
+
+                if(intval($interval->format('%h')) < 6) {
+                    $result = $this->response->teapot("I'm a teapot and I'm already connected !");
+                } else {
+                    $this->disconnect($mail);
+                    $result = $this->response->unauthorized("Token too old, you've been disconnected.");
+                }
             } else if($user) {
                 if(strcmp($hash_password_given, $user['hashedPassword']) === 0) {
                     $token = $this->encode->generateToken($mail);

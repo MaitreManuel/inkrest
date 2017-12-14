@@ -9,7 +9,8 @@ const config = {
   cache: true,
   entry: {
     app: [
-      './src/SiteBundle/Resources/assets/app.js',
+      './src/Resources/assets/app.js',
+      './src/Resources/react/application.js',
     ]
   },
   output: {
@@ -27,7 +28,7 @@ const config = {
       use: {
         loader: 'babel-loader',
         options: {
-          presets: ['env']
+          presets: ['env', 'react']
         }
       }
     }, {
