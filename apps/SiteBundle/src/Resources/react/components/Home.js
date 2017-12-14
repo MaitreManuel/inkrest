@@ -1,17 +1,19 @@
 import React from 'react';
 
-class Root extends React.Component {
+import Nav from './Nav';
+
+class Home extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <section id="Root">
-        <h1>Coucou</h1>
+      <section id="Home">
+        <Nav />
       </section>
     );
   }
 }
 
-module.exports = Root;
+module.exports = Home;

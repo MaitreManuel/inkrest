@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Root from './components/Root';
+import Routes from './utils/Routes';
 
-const container = document.getElementById('app-root');
+const container = document.getElementById('container');
 
 if(container) {
-  ReactDOM.render(<Root/>, container);
+  ReactDOM.render(<Routes/>, container);
 }

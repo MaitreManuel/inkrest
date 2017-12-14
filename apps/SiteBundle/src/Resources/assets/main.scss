@@ -1,23 +1,52 @@
-#modal-root {
-  position: relative;
-  z-index: 999;
-}
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+// general
+@import 'typography';
+@import 'variables';
+// components
+@import 'component/button';
+// tools
+@import 'tool/animation';
 
-.app {
-  height: 10em;
-  width: 10em;
-  background: lightblue;
-  overflow: hidden;
+html {
+  font-size: 16px;
 }
-
-.modal {
-  background-color: rgba(0,0,0,0.5);
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+body {
+    color: $white;
+    font-family: $josefin;
+    height: 100vh;
+    overflow: hidden;
+    width: 100vw;
+}
+#background {
+    background: -webkit-linear-gradient(-45deg, $step_1, $step_2, $step_3, $step_4);
+    background: -moz-linear-gradient(-45deg, $step_1, $step_2, $step_3, $step_4);
+    background: linear-gradient(-45deg, $step_1, $step_2, $step_3, $step_4);
+    background-size: 400% 400%;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+	-webkit-animation: Gradient 20s ease infinite;
+	-moz-animation: Gradient 20s ease infinite;
+	animation: Gradient 20s ease infinite;
+}
+#container {
+    height: 100%;
+    position: relative;
+    width: 100%;
+    z-index: 3;
+}
+#waves {
+    left: 0;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+.fadein {
+    cursor: pointer;
+    -webkit-transition: background-color .2s ease-in, color .2s ease-in, fill .2s ease-in, border .2s ease-in;
+    transition: background-color .2s ease-in, color .2s ease-in, fill .2s ease-in, border .2s ease-in;
 }

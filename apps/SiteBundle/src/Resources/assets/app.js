@@ -1,1 +1,2 @@
-// console.log('coucou');
+import './main.scss';
+import './js/waves.js';
