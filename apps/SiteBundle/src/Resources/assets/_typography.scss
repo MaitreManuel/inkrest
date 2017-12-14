@@ -3,6 +3,10 @@ $fa-font: FontAwesome;
 
 @import '~font-awesome/scss/font-awesome';
 
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+// Simple Line Icons
+$simple-line-font-path: '~simple-line-icons/fonts/';
+@import '~simple-line-icons/scss/simple-line-icons';
 
-$josefin: 'Roboto', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:600');
+
+$josefin: 'Open Sans', sans-serif;

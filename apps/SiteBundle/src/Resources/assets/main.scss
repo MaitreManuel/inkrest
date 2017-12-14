@@ -1,8 +1,8 @@
-// Bootstrap
-@import "~bootstrap/scss/bootstrap";
 // general
 @import 'typography';
 @import 'variables';
+// Bootstraps
+@import '~bootstrap/scss/bootstrap';
 // components
 @import 'component/button';
 // tools
