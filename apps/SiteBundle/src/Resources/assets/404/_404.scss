@@ -1,0 +1,42 @@
+@import './mars';
+@import './moon';
+@import './star';
+
+.footer-404, .title-404 {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    z-index: 10;
+    .text-slideup {
+        height: 75px;
+        overflow-y: hidden;
+        > * {
+            animation: 2s slide-up;
+        }
+        h1 {
+            font-size: 3.75rem;
+        }
+        .first {
+            animation-delay: 2s;
+        }
+        .second {
+            animation-delay: 3s;
+        }
+    }
+ }
+.footer-404 {
+    margin-top: 65vh;
+}
+.title-404 {
+    margin-top: 10vh;
+}
+
+@keyframes slide-up {
+  from {
+    margin-top: 100px;
+  }
+
+  to {
+    margin-top: 0;
+  }
+}

@@ -2,19 +2,19 @@ import React from 'react';
 
 import Nav from './Nav';
 
-class Home extends React.Component {
+class Account extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <section id="Home">
+      <section id="Account">
         <Nav/>
-        <h1>Home</h1>
+        <h1>Account</h1>
       </section>
     );
   }
 }
 
-module.exports = Home;
+module.exports = Account;

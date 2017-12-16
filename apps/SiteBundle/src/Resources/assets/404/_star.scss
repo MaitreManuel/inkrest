@@ -1,0 +1,31 @@
+.star {
+    background-color: white;
+    height: 2px;
+    left: 0;
+    position: absolute;
+    top: 50px;
+    width: 1px;
+    z-index: 1;
+    -webkit-animation: shooting 5s linear infinite;
+    animation: shooting 5s linear infinite;
+    &:before {
+        background: -webkit-linear-gradient(to right, rgba(black, 0) 0%,rgba(white, .4) 100%);
+        background: linear-gradient(to right, rgba(black, 0) 0%,rgba(white, .4) 100%);
+        content: "";
+        height: 2px;
+        position: absolute;
+        right: 1px;
+        top: 0;
+        width: 100px;
+    }
+}
+.star-2 {
+    top: 250px;
+    -webkit-animation: shooting 3s 2s linear infinite;
+    animation: shooting 3s 2s linear infinite;
+}
+.star-3 {
+    top: 450px;
+    -webkit-animation: shooting 8s 1s linear infinite;
+    animation: shooting 8s 1s linear infinite;
+}

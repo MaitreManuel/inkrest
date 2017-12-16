@@ -3,6 +3,15 @@ a.btn {
     font-size: 1rem;
     height: 38px;
     text-transform: uppercase;
+    &.btn-transparent {
+        border: 1px solid $white;
+        background-color: $transparent;
+        color: $white;
+        &:hover {
+            background-color: $white;
+            color: $black;
+        }
+    }
     &.btn-white {
         border: 1px solid $white;
         background-color: $white;
