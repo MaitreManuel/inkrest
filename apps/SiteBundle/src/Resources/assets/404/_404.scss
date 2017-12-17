@@ -7,20 +7,35 @@
     text-align: center;
     width: 100%;
     z-index: 10;
+    .btn {
+        opacity: 0;
+        -webkit-animation: 4s fade-in;
+        animation: 4s fade-in;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        animation-delay: 2.75s;
+    }
     .text-slideup {
         height: 75px;
         overflow-y: hidden;
         > * {
+            margin-top: 100px;
+            -webkit-animation: 2s slide-up;
             animation: 2s slide-up;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
         }
         h1 {
             font-size: 3.75rem;
         }
         .first {
-            animation-delay: 2s;
+            animation-delay: .75s;
         }
         .second {
-            animation-delay: 3s;
+            animation-delay: 1.5s;
+        }
+        .third {
+            animation-delay: 2.25s;
         }
     }
  }
@@ -29,14 +44,4 @@
 }
 .title-404 {
     margin-top: 10vh;
-}
-
-@keyframes slide-up {
-  from {
-    margin-top: 100px;
-  }
-
-  to {
-    margin-top: 0;
-  }
 }

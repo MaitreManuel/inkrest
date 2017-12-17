@@ -3,6 +3,22 @@
     -webkit-transition: background-color .2s ease-in, color .2s ease-in, fill .2s ease-in, border .2s ease-in;
     transition: background-color .2s ease-in, color .2s ease-in, fill .2s ease-in, border .2s ease-in;
 }
+@-webkit-keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@-webkit-keyframes slide-up {
+  from { margin-top: 100px; }
+  to { margin-top: 0; }
+}
+@keyframes slide-up {
+  from { margin-top: 100px; }
+  to { margin-top: 0; }
+}
 @-webkit-keyframes orbit {
     0% {
         left: -40px;

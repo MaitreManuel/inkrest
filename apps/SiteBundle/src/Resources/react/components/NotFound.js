@@ -80,7 +80,7 @@ class NotFound extends React.Component {
         </div>
         <div className="footer-404">
           <div className="text-slideup">
-            <h4>{ 'Vous n\'êtes pas seuls...' }</h4>
+            <h4 className="third">{ 'Vous n\'êtes pas seuls...' }</h4>
           </div>
         </div>
       </section>
