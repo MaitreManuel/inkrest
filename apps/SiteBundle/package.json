@@ -1,5 +1,7 @@
 {
   "name": "inkrest",
+  "author": "Trystan Eveno",
+  "licence": "MIT",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -14,6 +16,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.0.0-beta",
+    "clip-path": "^1.1.0",
     "font-awesome": "^4.7.0",
     "gsap": "^1.20.3",
     "jquery": "^3.2.1",
