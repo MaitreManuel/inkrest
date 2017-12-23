@@ -88,4 +88,4 @@ class NotFound extends React.Component {
   }
 }
 
-module.exports = NotFound;
+export default NotFound;

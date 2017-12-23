@@ -5,17 +5,19 @@
 @import '~bootstrap/scss/bootstrap';
 // components
 @import 'component/button';
+@import 'component/forms';
 // tools
 @import 'tool/animation';
 // others
 @import '404/404';
+@import 'nav/login';
 
 html {
   font-size: 16px;
 }
 body {
     color: $white;
-    font-family: $josefin;
+    font-family: $opensans;
     height: 100vh;
     overflow: hidden;
     width: 100vw;

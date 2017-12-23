@@ -17,6 +17,7 @@
   "dependencies": {
     "bootstrap": "^4.0.0-beta",
     "clip-path": "^1.1.0",
+    "domready": "^1.0.8",
     "font-awesome": "^4.7.0",
     "gsap": "^1.20.3",
     "jquery": "^3.2.1",
@@ -24,7 +25,8 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
-    "simple-line-icons": "^2.4.1"
+    "simple-line-icons": "^2.4.1",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",

@@ -5,8 +5,10 @@ import Account from './../components/Account';
 import Basket from './../components/Basket';
 import History from './../components/History';
 import Home from './../components/Home';
+import Login from './../components/Login';
 import NotFound from './../components/NotFound';
 import Product from './../components/Product';
+import Register from './../components/Register';
 
 class Routes extends React.Component {
   render() {
@@ -17,7 +19,9 @@ class Routes extends React.Component {
           <Route exact path="/account" component={ Account }></Route>
           <Route exact path="/basket" component={ Basket }></Route>
           <Route exact path="/history" component={ History }></Route>
+          <Route exact path="/login" component={ Login }></Route>
           <Route exact path="/products" component={ Product }></Route>
+          <Route exact path="/register" component={ Register }></Route>
           <Route component={ NotFound } />
         </Switch>
       </BrowserRouter>
@@ -26,4 +30,4 @@ class Routes extends React.Component {
 }
 
 
-module.exports = Routes;
+export default Routes;

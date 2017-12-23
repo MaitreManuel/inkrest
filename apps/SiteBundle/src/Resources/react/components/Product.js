@@ -17,4 +17,4 @@ class Product extends React.Component {
   }
 }
 
-module.exports = Product;
+export default Product;

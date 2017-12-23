@@ -1,0 +1,32 @@
+#login {
+    &:hover {
+        background: $white;
+        border-top-left-radius: $radius;
+        border-top-right-radius: $radius;
+        -webkit-animation: .4s fade-in;
+        animation: .4s fade-in;
+        i {
+            color: $greyDark;
+        }
+        #login-content {
+            background: $white;
+            border-top-left-radius: $radius;
+            border-bottom-right-radius: $radius;
+            border-bottom-left-radius: $radius;
+            color: $greyDark;
+            height: 300px;
+            padding-bottom: 10px;
+            padding-top: 10px;
+            position: absolute;
+            right: 16px;
+            width: 300px;
+            -webkit-animation: .2s fade-in;
+            animation: .2s fade-in;
+        }
+    }
+    #login-content {
+        height: 0;
+        overflow: hidden;
+        width: 0;
+    }
+}

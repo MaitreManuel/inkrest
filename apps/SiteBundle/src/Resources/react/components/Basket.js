@@ -17,4 +17,4 @@ class Basket extends React.Component {
   }
 }
 
-module.exports = Basket;
+export default Basket;

@@ -1,0 +1,281 @@
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+// select
+.custom-select {
+    background: transparent no-repeat right 0.75rem center;
+    background-size: 12px 12px;
+    border: none;
+    cursor: pointer;
+    height: 40px !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    &.black {
+        background-image: url("/bundles/site/img/arrow-down-black.png");
+        color: $black;
+    }
+    &.border {
+        border: 1px solid $greyLight !important;
+    }
+    &.red {
+        background-image: url("/bundles/site/img/arrow-down-red.png");
+        color: $red;
+    }
+    &.white {
+        background-image: url("/bundles/site/img/arrow-down-white.png");
+        color: $white;
+    }
+    &.in-input {
+        background: none !important;
+        border-right: 0 !important;
+        border-radius: 0 !important;
+        padding: 8px 5px !important;
+        width: 50px !important;
+    }
+    &:focus {
+        outline: -webkit-focus-ring-color auto 5px;
+    }
+    option {
+        color: $black;
+    }
+}
+// checkbox
+.custom-controls-stacked {
+    &.flex-md-row {
+        @media all and (min-width: 577px) {
+            flex-direction: row;
+        }
+    }
+    .custom-radio .custom-control-input:checked ~ .custom-control-indicator {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%23e5361e'/%3E%3C/svg%3E");
+        background-size: 8px 8px;
+        border: 1px solid $red;
+    }
+}
+.custom-controls-stacked, .form-checkbox {
+    .custom-control {
+        cursor: pointer;
+    }
+    .custom-control-description {
+        margin-left: 1px;
+        &:hover {
+            color: $red;
+        }
+        &.mt {
+            margin-top: 4px;
+        }
+    }
+    .custom-control-input:checked ~ .custom-control-indicator {
+        background-color: $white;
+    }
+    .custom-control-input ~ .custom-control-indicator {
+        background-color: $white;
+        border: 1px solid $greyMedium;
+        box-shadow: none;
+        height: 16px;
+        width: 16px;
+    }
+    .custom-radio .custom-control-input ~ .custom-control-indicator, .custom-checkbox .custom-control-input ~ .custom-control-indicator {
+        background-size: 0px 0px;
+        transition: background-size .075s ease-in;
+    }
+}
+.form-radio{
+    margin-bottom: 5px;
+    .custom-radio .custom-control-input:checked ~ .custom-control-indicator:not(.list-check) {
+        background-size: 12px 12px;
+    }
+    .list{
+        display: block;
+        list-style: none;
+        margin-bottom: 0;
+        padding-left: 0;
+        li{
+            display: inline-block;
+            label {
+                height: 50px;
+                margin-right: 0;
+                padding-left: 0;
+                width: 65px;
+            }
+            .custom-control-input ~ .custom-control-indicator {
+                height: 41px;
+                background-position: top center;
+                background-size: cover;
+                width: 50px;
+            }
+            .custom-radio .custom-control-input:checked ~ .custom-control-indicator.list-check {
+                border: 3px solid $red !important;
+            }
+        }
+    }
+}
+.form-checkbox {
+    margin-bottom: 5px;
+    .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator:not(.list-check) {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23e5361e' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E");
+        background-size: 12px 12px;
+    }
+    .list {
+        display: block;
+        list-style: none;
+        margin-bottom: 0;
+        padding-left: 0;
+        li {
+            display: inline-block;
+            label {
+                height: 50px;
+                margin-right: 0;
+                padding-left: 0;
+                width: 65px;
+            }
+            .custom-control-input ~ .custom-control-indicator {
+                height: 40px;
+                background-position: top center;
+                background-size: cover;
+                width: 50px;
+            }
+            .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator.white-check {
+                background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23ffffff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E");
+            }
+            .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator.black-check {
+                background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23000000' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E");
+            }
+            .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator.list-check {
+                border: 3px solid $red !important;
+            }
+        }
+        .wrapper-label {
+            max-width: 75px;
+            max-height: 36px;
+            min-height: 36px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            .label {
+                font-size: 12px;
+                margin: 0;
+            }
+        }
+    }
+}
+// form group
+.form-group {
+    display: inline-flex;
+    height: 40px;
+    @media all and (max-width: 1024px) and (min-width: 769px) {
+        width: 100%;
+    }
+    .form {
+        display: inline-flex;
+        .input-group {
+            border: 1px solid $greyMedium;
+            border-right: none;
+            border-top-left-radius: 7px;
+            border-bottom-left-radius: 7px;
+            height: 40px;
+            padding: 3px 15px 4px 15px;
+            @media all and (max-width: 1024px) {
+                max-width: 180px;
+            }
+            @media all and (max-width: 1024px) {
+                max-width: 200px;
+            }
+        }
+    }
+    .input-newsletter, .submit {
+        font-family: $opensans;
+        padding: 7px;
+    }
+    .submit {
+        border-top-right-radius: 7px;
+        border-bottom-right-radius: 7px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        height: 40px;
+        margin: 0;
+        @media all and (max-width: 1024px) {
+            min-width: 75px !important;
+            padding: 5px !important;
+        }
+    }
+}
+// form input
+.form-input {
+    &.cheat {
+        .select2, .select2-search__field {
+            width: 100% !important;
+        }
+    }
+    .form-control {
+        border: 1px solid $greyMedium;
+        border-radius: 4px;
+        font-size: 15px;
+        height: 40px;
+        padding: 3px 15px 4px 15px;
+        &:focus {
+            outline: -webkit-focus-ring-color auto 5px;
+        }
+    }
+    .input-group {
+        .input-group-addon {
+            background: none;
+            border: 1px solid $greyMedium;
+            border-right: 0;
+            color: $greyDark;
+            height: 40px;
+        }
+    }
+}
+// form grid
+.form-grid {
+    .custom-select {
+        border: 1px solid $greyMedium;
+        border-radius: 4px;
+        width: 100%;
+    }
+    .form-row:not(.last-row) {
+        margin-bottom: 2.5rem;
+    }
+}
+// wysiwyg
+.ql-snow {
+    border: 1px solid $greyMedium !important;
+    &.ql-toolbar {
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+    }
+    &.ql-container {
+        border-top: 0px !important;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        font-family: $opensans !important;
+    }
+}
+// select2
+.select2-selection {
+    height: 40px;
+    padding: 6px 15px 5px 15px;
+}
+.select2-selection__choice {
+    margin-top: 2px !important;
+}
+
+.select2-container .select2-selection--single {
+height: auto !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 8px !important;
+    right: 8px !important;
+}
+
+.select2-results__message {
+font-size: 12px !important;
+}

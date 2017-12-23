@@ -17,4 +17,4 @@ class Account extends React.Component {
   }
 }
 
-module.exports = Account;
+export default Account;

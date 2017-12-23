@@ -17,4 +17,4 @@ class History extends React.Component {
   }
 }
 
-module.exports = History;
+export default History;
