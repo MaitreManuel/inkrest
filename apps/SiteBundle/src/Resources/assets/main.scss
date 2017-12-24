@@ -6,6 +6,7 @@
 // components
 @import 'component/button';
 @import 'component/forms';
+@import 'component/input';
 // tools
 @import 'tool/animation';
 // others
@@ -55,4 +56,16 @@ body {
     position: fixed;
     top: 0;
     z-index: 2;
+}
+.green {
+    color: $green;
+    &:hover {
+        color: $greenDark;
+    }
+}
+.red {
+    color: $red;
+    &:hover {
+        color: $redDark;
+    }
 }

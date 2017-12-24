@@ -209,7 +209,13 @@ class User {
                         'mail' => $mail
                     );
                     $this->update($data, $identifier);
-                    $result = $this->response->ok("Successfully connected", $token);
+                    $user = array(
+                        'firstname' => $user['firstname'],
+                        'lastname' => $user['lastname'],
+                        'mail' => $mail,
+                        'token' => $token,
+                    );
+                    $result = $this->response->ok("Successfully connected", $user);
                 } else {
                     $result = $this->response->bad_request("Password not match");
                 }

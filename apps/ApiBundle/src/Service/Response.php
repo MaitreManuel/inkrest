@@ -3,7 +3,7 @@
 namespace ApiBundle\Service;
 
 class Response {
-    public function ok($message = '', $token = '') {
+    public function ok($message = '', $array = '') {
         $response = array(
             'code' => 200,
             'status' => 'success',
@@ -12,8 +12,8 @@ class Response {
         if(!empty($message)) {
             $response['message'] = $message;
         }
-        if(!empty($token)) {
-            $response['token'] = $token;
+        if(!empty($array)) {
+            $response['array'] = $array;
         }
 
         return $response;

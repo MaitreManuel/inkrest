@@ -12,6 +12,15 @@ a.btn {
             color: $white;
         }
     }
+    &.btn-red {
+        border: 1px solid $red;
+        background-color: $white;
+        color: $red;
+        &:hover {
+            background-color: $red;
+            color: $white;
+        }
+    }
     &.btn-transparent {
         border: 1px solid $white;
         background-color: $transparent;

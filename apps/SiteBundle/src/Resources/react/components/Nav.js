@@ -1,4 +1,6 @@
 import React from 'react';
+import 'whatwg-fetch';
+import './../../config.js';
 
 import NavLink from './../utils/NavLink';
 
@@ -6,26 +8,111 @@ class Nav extends React.Component {
   constructor(props) {
     super(props);
 
+    this.connection = this.connection.bind(this);
+    this.deconnection = this.deconnection.bind(this);
+    this.updateUser = this.updateUser.bind(this);
+
     this.state = {
+      logged: localStorage.getItem('token') != undefined ? true : false,
       user: {
-        email      : '',
+        mail       : '',
         password   : '',
       },
     };
   }
 
   connection() {
+    var me = this,
+      user = me.state.user,
+      api = API(), // eslint-disable-line no-undef
+      params = '',
+      data = '',
+      mail = document.querySelector('input[name=mail]'),
+      password = document.querySelector('input[name=password]');
 
+    if(mail.classList.contains('input-error')) { mail.classList.remove('input-error'); }
+    if(password.classList.contains('input-error')) { password.classList.remove('input-error'); }
+    if(!user.mail && !user.password) {
+      mail.classList.add('input-error');
+      password.classList.add('input-error');
+    } else if(!user.mail) {
+      mail.classList.add('input-error');
+    } else if(!user.password) {
+      password.classList.add('input-error');
+    } else {
+      params = {
+        mail: user.mail,
+        password: user.password
+      };
+      data = Object.keys(params).map((key) => {
+        return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
+      }).join('&');
+
+      fetch(api.user.connect, {
+        headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded'}),
+        method: 'POST',
+        body: data,
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          if(response.status === 'success') {
+            localStorage.setItem('firstname', response.array.firstname);
+            localStorage.setItem('lastname', response.array.lastname);
+            localStorage.setItem('mail', response.array.mail);
+            localStorage.setItem('token', response.array.token);
+            me.setState({ logged: true });
+          }
+        });
+    }
+  }
+
+  deconnection() {
+    var me = this,
+      api = API(), // eslint-disable-line no-undef
+      params = '',
+      data = '';
+
+    params = {
+      mail: localStorage.getItem('mail')
+    };
+    data = Object.keys(params).map((key) => {
+      return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
+    }).join('&');
+
+    fetch(api.user.disconnect, {
+      headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded'}),
+      method: 'POST',
+      body: data,
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if(response.status === 'success') {
+          localStorage.removeItem('firstname');
+          localStorage.removeItem('lastname');
+          localStorage.removeItem('mail');
+          localStorage.removeItem('token');
+          me.setState({ logged: false });
+        }
+      });
   }
 
   updateUser(event) {
-    var user = this.state.user;
+    var user = this.state.user,
+      login = document.querySelector('#login');
+
+    if(user.mail < 1 && user.password.length < 1) {
+      login.classList.remove('hover');
+    } else {
+      login.classList.add('hover');
+    }
     user[event.target.name] = event.target.value;
-    this.setState({user: user});
+    this.setState({ user: user });
   }
 
   render() {
-    var logged = localStorage.getItem('user_token') ? true : false;
+    var logged = this.state.logged,
+      firstname = localStorage.getItem('firstname'),
+      lastname = localStorage.getItem('lastname');
     // mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? true : false,
 
     return (
@@ -68,13 +155,14 @@ class Nav extends React.Component {
                   <a href='javascript:void(0)' className="nav-link fadein">
                     <i className="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
                   </a>
+                  <div className="decoy"></div>
                   <div id="login-content">
                     <div className="container-fluid">
                       <div className="row">
                         <div className="col-12">
                           <div className="form-input mb-3">
                             <label htmlFor="company">E-mail</label>
-                            <input type="text" className="form-control" name="lemail" placeholder="john.doe@exemple.fr" />
+                            <input onInput={ this.updateUser } type="mail" className="form-control" name="mail" placeholder="john.doe@exemple.fr" />
                           </div>
                         </div>
                       </div>
@@ -82,24 +170,20 @@ class Nav extends React.Component {
                         <div className="col-12">
                           <div className="form-input mb-4">
                             <label htmlFor="company">Mot de passe</label>
-                            <input type="password" className="form-control" name="password" placeholder=""/>
+                            <input onInput={ this.updateUser } type="password" className="form-control" name="password" placeholder=""/>
                           </div>
                         </div>
                       </div>
                       <div className="row">
-                        <div className="col-12">
-                          <div className="form-input text-center mb-4">
-                            <a href="javascript:void(0)" className="btn btn-black fadein">Connexion</a>
-                          </div>
+                        <div className="col-12 text-center mb-4">
+                          <a onClick={ this.connection } href="javascript:void(0)" className="btn btn-black fadein">Connexion</a>
                         </div>
                       </div>
                       <div className="row">
-                        <div className="col-12">
-                          <div className="form-input text-center">
-                            <NavLink to='/register' className="fadein">
-                              Pas de compte ? Inscrivez-vous !
-                            </NavLink>
-                          </div>
+                        <div className="col-12 text-center">
+                          <NavLink to='/register' className="fadein">
+                            Pas de compte ? Inscrivez-vous !
+                          </NavLink>
                         </div>
                       </div>
                     </div>
@@ -109,13 +193,25 @@ class Nav extends React.Component {
               { logged === true &&
                 <li id="login" className="nav-link">
                   <NavLink to='/account' className="nav-link fadein">
-                    <i className="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
+                    <i className="fa fa-user-circle-o fa-2x green" aria-hidden="true"></i>
                   </NavLink>
                   <div id="login-content">
                     <div className="container-fluid">
                       <div className="row">
-                        <div className="col-12">
-                          Connecté !
+                        <div className="col-12 mb-4">
+                          Bonjour, { firstname } { lastname } !
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-12 text-center mb-3">
+                          <NavLink to='/account' className="btn btn-black fadein">
+                            Mon compte
+                          </NavLink>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-12 text-center">
+                          <a onClick={ this.deconnection } href="javascript:void(0)" className="red fadein">Deconnexion</a>
                         </div>
                       </div>
                     </div>

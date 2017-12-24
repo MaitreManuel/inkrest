@@ -1,5 +1,5 @@
 #login {
-    &:hover {
+    &.hover, &:hover {
         background: $white;
         border-top-left-radius: $radius;
         border-top-right-radius: $radius;
@@ -23,10 +23,21 @@
             -webkit-animation: .2s fade-in;
             animation: .2s fade-in;
         }
+        .decoy {
+            display: block;
+            height: 49px;
+            position: absolute;
+            right: 80px;
+            top: 16px;
+            width: 25px;
+        }
     }
     #login-content {
         height: 0;
         overflow: hidden;
         width: 0;
+    }
+    .decoy {
+        display: none;
     }
 }
