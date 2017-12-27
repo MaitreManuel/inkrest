@@ -7,11 +7,15 @@ import './main.scss';
 import './js/waves.js';
 
 domready(() => {
+  // dangerous zone (jQuery)
+
+  // variables
   var rbefore = document.querySelector('.ring-before'),
     rbbefore = document.querySelector('.ring-bigger-before'),
     rafter = document.querySelector('.ring-after'),
     rbafter = document.querySelector('.ring-bigger-after'),
     login = document.querySelector('#login'),
+    login_content = document.querySelector('#login-content'),
     mail = document.querySelector('input[name=mail]'),
     password = document.querySelector('input[name=password]');
 
@@ -25,6 +29,12 @@ domready(() => {
 
   // listener hover login content
   if(login && mail && password) {
+    login.addEventListener('mouseover', () => {
+      login.classList.add('hover');
+    });
+    login_content.addEventListener('mouseleave', () => {
+      login.classList.remove('hover');
+    });
     login.addEventListener('focusin', () => {
       login.classList.add('hover');
     });

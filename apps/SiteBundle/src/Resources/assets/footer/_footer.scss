@@ -1,0 +1,18 @@
+footer#Footer {
+    height: 50px;
+    *:not(.pop) {
+        color: rgba($white, 0.5);
+    }
+    div:not(.last-node) {
+        height: 100%;
+    }
+    .last-node {
+        height: 24px;
+        margin: auto;
+    }
+    .me {
+        &:hover {
+            color: rgba($white, 0.7);
+        }
+    }
+}

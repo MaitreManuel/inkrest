@@ -97,14 +97,7 @@ class Nav extends React.Component {
   }
 
   updateUser(event) {
-    var user = this.state.user,
-      login = document.querySelector('#login');
-
-    if(user.mail < 1 && user.password.length < 1) {
-      login.classList.remove('hover');
-    } else {
-      login.classList.add('hover');
-    }
+    var user = this.state.user;
     user[event.target.name] = event.target.value;
     this.setState({ user: user });
   }
@@ -155,7 +148,6 @@ class Nav extends React.Component {
                   <a href='javascript:void(0)' className="nav-link fadein">
                     <i className="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
                   </a>
-                  <div className="decoy"></div>
                   <div id="login-content">
                     <div className="container-fluid">
                       <div className="row">

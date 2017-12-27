@@ -3,14 +3,20 @@
 @import 'variables';
 // Bootstraps
 @import '~bootstrap/scss/bootstrap';
+// Libs
+@import '~react-vertical-timeline-component/style.min.css';
 // components
 @import 'component/button';
 @import 'component/forms';
 @import 'component/input';
+@import 'component/popover';
+@import 'component/timeline';
 // tools
 @import 'tool/animation';
-// others
+// commons
 @import '404/404';
+@import 'footer/footer';
+@import 'nav/header';
 @import 'nav/login';
 
 html {
@@ -57,11 +63,24 @@ body {
     top: 0;
     z-index: 2;
 }
+.blockoverflow {
+    height: calc(100vh - (81px + 50px + 56px)); // 100vh: document, 81px: header, 50px: footer, 56px: section title
+    overflow-y: auto;
+}
 .green {
     color: $green;
     &:hover {
         color: $greenDark;
     }
+}
+.p-absolute {
+    position: absolute !important;
+}
+.p-fixed {
+    position: fixed !important;
+}
+.p-relative {
+    position: relative !important;
 }
 .red {
     color: $red;

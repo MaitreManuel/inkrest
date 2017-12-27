@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Footer from './Footer';
 import Nav from './Nav';
 
 class Product extends React.Component {
@@ -11,7 +12,18 @@ class Product extends React.Component {
     return (
       <section id="Product">
         <Nav/>
-        <h1>Product</h1>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-12">
+              <h1>Product</h1>
+            </div>
+          </div>
+          <div className="row blockoverflow">
+            <div className="col-12">
+            </div>
+          </div>
+        </div>
+        <Footer/>
       </section>
     );
   }

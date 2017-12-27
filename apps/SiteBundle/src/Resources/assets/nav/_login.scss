@@ -3,8 +3,8 @@
         background: $white;
         border-top-left-radius: $radius;
         border-top-right-radius: $radius;
-        -webkit-animation: .4s fade-in;
-        animation: .4s fade-in;
+        -webkit-animation: .5s fade-in;
+        animation: .5s fade-in;
         i {
             color: $greyDark;
         }
@@ -20,16 +20,9 @@
             position: absolute;
             right: 16px;
             width: 300px;
+            z-index: 5;
             -webkit-animation: .2s fade-in;
             animation: .2s fade-in;
-        }
-        .decoy {
-            display: block;
-            height: 49px;
-            position: absolute;
-            right: 80px;
-            top: 16px;
-            width: 25px;
         }
     }
     #login-content {

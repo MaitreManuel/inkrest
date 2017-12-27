@@ -7,7 +7,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <section id="Login">
+      <section id="Login" className="Root">
         <h1>Login</h1>
       </section>
     );
