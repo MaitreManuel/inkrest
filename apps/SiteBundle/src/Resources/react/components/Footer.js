@@ -15,7 +15,7 @@ class History extends React.Component {
               <span>&copy; 2017 - <a className="me fadein" href="https://github.com/MaitreManuel" target="_blank" rel="noopener noreferrer">Trystan Eveno</a></span>
             </div>
             <div className="col-1 text-right last-node">
-              <span className="qs"><i className="icon-info"></i> <span className="text-center pop above">Besoin d{'\''}aide ?</span></span>
+              <span className="qs"><i className="icon-question"></i> <span className="text-center pop above">Besoin d{'\''}aide ?</span></span>
             </div>
           </div>
         </div>

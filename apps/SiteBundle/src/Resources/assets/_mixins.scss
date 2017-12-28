@@ -1,0 +1,18 @@
+$colors: (
+    "black":    rgb(0, 0, 0),
+    "blue":     rgb(33, 150, 243),
+    "green":    rgb(0, 204, 0),
+    "orange":   rgb(255, 153, 0),
+    "pink":     rgb(233, 30, 99),
+    "red":      rgb(229, 54, 30)
+);
+
+@mixin border-top-color-class() {
+    @each $name, $color in $colors {
+        .bt-#{$name} {
+            .vertical-timeline-element-content {
+                border-top: 3px solid $color !important;
+            }
+        }
+    }
+}

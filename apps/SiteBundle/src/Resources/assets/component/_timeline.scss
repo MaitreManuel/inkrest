@@ -1,3 +1,43 @@
-h3.vertical-timeline-element-title {
+.vertical-timeline-element-content {
+    border-radius: $radius;
+    box-shadow: none;
+}
+.vertical-timeline-element-content .vertical-timeline-element-date {
+    opacity: 1;
+}
+.vertical-timeline-element-date {
+    color: $white !important;
+}
+.vertical-timeline-element-icon {
+    i {
+        display: block;
+        width: 24px;
+        height: 24px;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        margin-left: -12px;
+        margin-top: -12px;
+    }
+}
+.vertical-timeline-element-subtitle {
+    color: $greyDark;
+}
+.vertical-timeline-element-title {
     color: $black;
+}
+.vertical-timeline-element-content .vertical-timeline-element-date {
+    left: 138%;
+}
+.vertical-timeline-element.vertical-timeline-element--right .vertical-timeline-element-content .vertical-timeline-element-date,
+.vertical-timeline-element:nth-child(even):not(.vertical-timeline-element--left) .vertical-timeline-element-content .vertical-timeline-element-date {
+    right: 138%;
+}
+.tmln-ico-size {
+    @media all and (min-width: 1025px) {
+        font-size: 1.55rem;
+    }
+    @media all and (max-width: 1024px) {
+        font-size: 1.5rem;
+    }
 }

@@ -123,7 +123,7 @@ class Nav extends React.Component {
             <ul className="navbar-nav">
               <li className="nav-item">
                 <NavLink to="/products" className="nav-link fadein">
-                  Products
+                  Produits
                 </NavLink>
               </li>
               <li className="nav-item">

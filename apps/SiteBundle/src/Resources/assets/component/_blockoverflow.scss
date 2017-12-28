@@ -1,0 +1,38 @@
+$fat: 8px;
+$skinny: 4px;
+
+.blockheader {
+    @media all and (max-width: 576px) {
+        h1 {
+            font-size: 2.1rem;
+        }
+        p {
+            margin-bottom: 0;
+        }
+    }
+}
+.blockoverflow {
+    height: calc(100vh - (81px + 50px + 96px)); // 100vh: document, 81px: header, 50px: footer, 96px: section
+    margin-right: -10px;
+    overflow-y: auto;
+}
+.blockoverflow::-webkit-scrollbar {
+  width: $fat;
+}
+.blockoverflow::-webkit-scrollbar-track {
+  border: 0 solid $white;
+  &:horizontal { border-bottom-width: 1px; }
+  &:vertical { border-right-width: 1px; }
+}
+.blockoverflow::-webkit-scrollbar-thumb {
+  border: 0px solid $white;
+  &:horizontal {
+    border-bottom-width: $skinny;
+    &:hover { border-bottom-width: $fat; }
+  }
+  &:vertical {
+    border-right-width: $skinny;
+    &:hover { border-right-width: $fat; }
+  }
+
+}
