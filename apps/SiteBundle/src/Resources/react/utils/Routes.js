@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Account from './../components/Account';
 import Basket from './../components/Basket';
+import Creation from './../components/Creation';
 import History from './../components/History';
 import Home from './../components/Home';
 import Login from './../components/Login';
@@ -18,6 +19,7 @@ class Routes extends React.Component {
           <Route exact path="/" component={ Home }></Route>
           <Route exact path="/account" component={ Account }></Route>
           <Route exact path="/basket" component={ Basket }></Route>
+          <Route exact path="/creation" component={ Creation }></Route>
           <Route exact path="/history" component={ History }></Route>
           <Route exact path="/login" component={ Login }></Route>
           <Route exact path="/products" component={ Product }></Route>

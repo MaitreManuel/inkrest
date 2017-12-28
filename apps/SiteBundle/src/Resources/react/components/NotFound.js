@@ -1,6 +1,5 @@
 import React from 'react';
-
-import NavLink from './../utils/NavLink';
+import { NavLink } from 'react-router-dom';
 
 class NotFound extends React.Component {
   constructor(props) {
@@ -65,16 +64,16 @@ class NotFound extends React.Component {
               <div className="flag">
                 <div className="small-tentacle"></div>
               </div>
-              <div className="ring-before"></div>
-              <div className="ring-bigger-before"></div>
+              <div data-clip="50% 0 0 0" className="ring-before"></div>
+              <div data-clip="50% 0 0 0" className="ring-bigger-before"></div>
               <div className="planet">
                 <div className="surface"></div>
                 <div className="crater1"></div>
                 <div className="crater2"></div>
                 <div className="crater3"></div>
               </div>
-              <div className="ring-after"></div>
-              <div className="ring-bigger-after"></div>
+              <div data-clip="0 0 50% 0" className="ring-after"></div>
+              <div data-clip="0 0 50% 0" className="ring-bigger-after"></div>
             </div>
           </div>
         </div>

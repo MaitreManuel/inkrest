@@ -30,7 +30,7 @@ class History extends React.Component {
                   iconStyle={{ background: 'rgb(33, 150, 243)', color: '#ffffff' }}
                   icon={ <i className="icon-feed tmln-ico-size"></i> } >
                   <h3 className="vertical-timeline-element-title">Digitalisation</h3>
-                  <h4 className="vertical-timeline-element-subtitle">Création du branche digitale</h4>
+                  <h4 className="vertical-timeline-element-subtitle">Création d{'\''}une branche digitale</h4>
                   <p>
                     Total Print ouvre une branche digitale de e-commerce pour vendre différentes impressions en ligne. Son nom ? inkrest.
                   </p>
@@ -43,7 +43,7 @@ class History extends React.Component {
                   <h3 className="vertical-timeline-element-title">Nouveau départ</h3>
                   <h4 className="vertical-timeline-element-subtitle">Changement de nom</h4>
                   <p>
-                    Après 5 années difficiles, Dupont-Imprimerie décide de se renommer Total Print, achète du nouveau matériel et engage de nouveaux ouvriers.
+                    Après 5 années difficiles, Dupont-Imprimerie décide de se renommer Total Print, achète du nouveau matériel et engage de nouveaux salariés.
                   </p>
                 </VerticalTimelineElement>
                 <VerticalTimelineElement

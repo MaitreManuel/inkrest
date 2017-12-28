@@ -25,6 +25,7 @@
 }
 .vertical-timeline-element-title {
     color: $black;
+    margin-bottom: 0.35rem;
 }
 .vertical-timeline-element-content .vertical-timeline-element-date {
     left: 138%;
@@ -34,10 +35,10 @@
     right: 138%;
 }
 .tmln-ico-size {
-    @media all and (min-width: 1025px) {
+    @media all and (min-width: 1170px) {
         font-size: 1.55rem;
     }
-    @media all and (max-width: 1024px) {
+    @media all and (max-width: 1169px) {
         font-size: 1.5rem;
     }
 }

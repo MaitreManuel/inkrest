@@ -1,8 +1,9 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import 'whatwg-fetch';
 import './../../config.js';
+import './../../assets/js/functions.js';
 
-import NavLink from './../utils/NavLink';
 
 class Nav extends React.Component {
   constructor(props) {
@@ -19,6 +20,10 @@ class Nav extends React.Component {
         password   : '',
       },
     };
+  }
+
+  componentDidUpdate() {
+    init_navlogin(); // eslint-disable-line no-undef
   }
 
   connection() {
@@ -122,12 +127,17 @@ class Nav extends React.Component {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <NavLink to="/products" className="nav-link fadein">
+                <NavLink to="/products" className="nav-link fadein" activeClassName="active">
                   Produits
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/history" className="nav-link fadein">
+                <NavLink to="/creation" className="nav-link fadein" activeClassName="active">
+                  Création
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink to="/history" className="nav-link fadein" activeClassName="active">
                   Histoire
                 </NavLink>
               </li>
