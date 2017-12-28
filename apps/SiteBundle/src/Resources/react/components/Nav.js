@@ -26,6 +26,10 @@ class Nav extends React.Component {
     init_navlogin(); // eslint-disable-line no-undef
   }
 
+  componentDidMount() {
+    init_navlogin(); // eslint-disable-line no-undef
+  }
+
   connection() {
     var me = this,
       user = me.state.user,
