@@ -32,7 +32,7 @@ class History extends React.Component {
                   <h3 className="vertical-timeline-element-title">Digitalisation</h3>
                   <h4 className="vertical-timeline-element-subtitle">Création d{'\''}une branche digitale</h4>
                   <p>
-                    Total Print ouvre une branche digitale de e-commerce pour vendre différentes impressions en ligne. Son nom ? inkrest.
+                    Total Print ouvre une branche digitale de e-commerce pour vendre différentes impressions en ligne tout en créant un espace communautaire pour publier ses propres modèles. Cette branche se nommera inkrest.
                   </p>
                 </VerticalTimelineElement>
                 <VerticalTimelineElement
