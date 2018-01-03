@@ -16,7 +16,7 @@ class Creaation extends React.Component {
           <div className="row">
             <div className="col-12">
               <h1>Création</h1>
-              <p>Importez vos modèles et publiez les ! Faites découvrir au monde vos chef-d{'\''}œuvres !</p>
+              <p>Importez vos modèles et publiez les ! Faites découvrir vos plus beaux chef-d{'\''}œuvres !</p>
             </div>
           </div>
           <div className="row blockoverflow">
