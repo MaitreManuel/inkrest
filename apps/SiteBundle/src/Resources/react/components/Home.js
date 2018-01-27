@@ -16,6 +16,7 @@ class Home extends React.Component {
           <div className="row">
             <div className="col-12">
               <h1>Home</h1>
+              <p>Bienvenue sur inkrest, faites vos propres modèles où utilisez les nôtres !</p>
             </div>
           </div>
           <div className="row blockoverflow">

@@ -11,6 +11,7 @@
 @import 'component/button';
 @import 'component/forms';
 @import 'component/input';
+@import 'component/icon-rocket';
 @import 'component/popover';
 @import 'component/timeline';
 // tools
@@ -40,32 +41,20 @@ body {
     top: 0;
     width: 100%;
     z-index: 1;
-    &.general {
-        background: -webkit-linear-gradient(-45deg, $step_1, $step_2, $step_3, $step_4);
-        background: linear-gradient(-45deg, $step_1, $step_2, $step_3, $step_4);
-        background-size: 400% 400%;
-        -webkit-animation: gradient 20s ease infinite;
-        animation: gradient 20s ease infinite;
-    }
-    &.notfound {
-        background-color: #163040;
-        background-image:  url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle opacity="0.5" fill="%23FFFFFF" cx="28.75" cy="22.338" r="0.713"/><circle opacity="0.2" fill="%23FFFFFF" cx="26.75" cy="79.443" r="0.307"/><circle opacity="0.5" fill="%23FFFFFF" cx="50" cy="41.884" r="0.308"/><circle fill="%23FFFFFF" cx="12.883" cy="42.25" r="0.367"/><circle opacity="0.4" fill="%23FFFFFF" cx="80" cy="72.818" r="0.307"/><circle opacity="0.5" fill="%23FFFFFF" cx="55.625" cy="12.375" r="0.308"/><circle opacity="0.2" fill="%23FFFFFF" cx="73.307" cy="89.375" r="0.308"/><circle opacity="0.5" fill="%23FFFFFF" cx="73" cy="53.884" r="0.308"/><circle opacity="0.5" fill="%23FFFFFF" cx="38.875" cy="89.432" r="0.385"/></svg>');
-        background-size: 20rem 20rem;
-        background-position: center 0;
-        animation: space 20s linear infinite;
-    }
+}
+.bg-space {
+    background-color: $violet;
+    background-image:  url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle opacity="0.5" fill="%23FFFFFF" cx="28.75" cy="22.338" r="0.713"/><circle opacity="0.2" fill="%23FFFFFF" cx="26.75" cy="79.443" r="0.307"/><circle opacity="0.5" fill="%23FFFFFF" cx="50" cy="41.884" r="0.308"/><circle fill="%23FFFFFF" cx="12.883" cy="42.25" r="0.367"/><circle opacity="0.4" fill="%23FFFFFF" cx="80" cy="72.818" r="0.307"/><circle opacity="0.5" fill="%23FFFFFF" cx="55.625" cy="12.375" r="0.308"/><circle opacity="0.2" fill="%23FFFFFF" cx="73.307" cy="89.375" r="0.308"/><circle opacity="0.5" fill="%23FFFFFF" cx="73" cy="53.884" r="0.308"/><circle opacity="0.5" fill="%23FFFFFF" cx="38.875" cy="89.432" r="0.385"/></svg>');
+    background-size: 20rem 20rem;
+    background-position: center 0;
+    -webkit-animation: space 20s linear infinite;
+    animation: space 20s linear infinite;
 }
 #container {
     height: 100%;
     position: relative;
     width: 100%;
     z-index: 3;
-}
-#waves {
-    left: 0;
-    position: fixed;
-    top: 0;
-    z-index: 2;
 }
 .green {
     color: $green;

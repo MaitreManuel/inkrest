@@ -1,3 +1,48 @@
 header#Nav {
+    background-color: rgba($black, .5);
     height: 81px;
+    -webkit-transition: background-color .5s ease-in;
+    transition: background-color .5s ease-in;
+    .decoy-hover:before {
+        background-color: $white;
+        bottom: -2px;
+        content: "";
+        height: 2px;
+        left: 0;
+        position: absolute;
+        visibility: hidden;
+        width: 100%;
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transition: all .5s ease-in-out 0s;
+        transition: all .5s ease-in-out 0s;
+    }
+    &:hover {
+        background-color: $black;
+        .decoy-hover {
+            cursor: default;
+        }
+        .decoy-hover:before {
+            visibility: visible;
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+        }
+    }
+    .custom-nav {
+        .nav-item {
+            margin-left: 5px;
+            &:hover {
+            }
+        }
+        .nav-link {
+            padding-right: 1.25rem;
+            padding-left: 1.25rem;
+            &.active {
+
+            }
+        }
+    }
+    .navbar-brand {
+        margin-left: 85px !important;
+    }
 }

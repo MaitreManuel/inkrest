@@ -16,6 +16,7 @@ class Product extends React.Component {
           <div className="row">
             <div className="col-12">
               <h1>Catalogue</h1>
+              <p>Découvrez tous nos produits et ceux de la communauté !</p>
             </div>
           </div>
           <div className="row blockoverflow">

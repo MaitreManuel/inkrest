@@ -6,28 +6,6 @@ class NotFound extends React.Component {
     super(props);
   }
 
-  componentWillMount() {
-    const bg = document.querySelector('#background'),
-      waves = document.querySelector('#waves');
-
-    bg.classList.remove('general');
-    bg.classList.add('notfound');
-
-    document.querySelector('body').removeChild(waves);
-  }
-
-  quitError() {
-    const bg = document.querySelector('#background'),
-      canv = document.createElement('canvas');
-
-    canv.id = 'waves';
-
-    bg.classList.remove('notfound');
-    bg.classList.add('general');
-    document.body.appendChild(canv);
-    waves(); // eslint-disable-line no-undef
-  }
-
   render() {
     return (
       <section id="NotFound">
@@ -38,7 +16,7 @@ class NotFound extends React.Component {
           <div className="text-slideup">
             <h3 className="second">Êtes-vous perdu ?</h3>
           </div>
-          <NavLink onClick={ this.quitError } to="/" className="btn btn-transparent fadein">
+          <NavLink to="/" className="btn btn-transparent fadein">
             <span>{ 'Page d\'accueil' }</span>
           </NavLink>
         </div>

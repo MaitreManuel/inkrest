@@ -21,6 +21,15 @@ a.btn {
             color: $white;
         }
     }
+    &.btn-violet {
+        border: 1px solid $violet;
+        background-color: $white;
+        color: $violet;
+        &:hover {
+            background-color: $violet;
+            color: $white;
+        }
+    }
     &.btn-transparent {
         border: 1px solid $white;
         background-color: $transparent;

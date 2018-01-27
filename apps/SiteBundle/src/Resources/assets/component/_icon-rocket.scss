@@ -1,0 +1,146 @@
+.scene {
+    background-color: $violet;
+    border: 3px solid $white;
+    border-radius: 50%;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+    height: 75px;
+    overflow: hidden;
+    top: 3px;
+    width: 75px;
+    position: absolute;
+}
+.rocket {
+    left: 22px;
+    position: absolute;
+    top: 30px;
+    z-index: 20;
+    // -webkit-animation: orbit 2s linear infinite;
+    // animation: orbit 2s linear infinite;
+    -webkit-transform: rotate(-35deg);
+    transform: rotate(-35deg);
+    .rocket-body {
+        background-color: #d11c40;
+        border-bottom-right-radius: 100%;
+        border-left: 3px solid #5b595d;
+        border-right: 3px solid #D11C40;
+        border-top-right-radius: 100%;
+        height: 15px;
+        position: absolute;
+        width: 40px;
+        -webkit-animation: wiggling ease-out 300ms infinite;
+        animation: wiggling ease-out 300ms infinite;
+        &:before, &:after {
+            background-color: #a71732;
+            content: '';
+            display: block;
+            height: 50%;
+            position: absolute;
+            top:50%;
+            width: 51%;
+        }
+        &:before {
+            border-bottom-right-radius: 100%;
+            right: 0;
+        }
+        &:after {
+            left: -3px;
+            border-left: 3px solid #444244;
+        }
+        .fin-top, .fin-bottom {
+            background-color: #7f0e27;
+            border-left: 3px solid #D11C40;
+            height: 8px;
+            left: -4px;
+            position: absolute;
+            width: 10px;
+            &:before {
+                background-color: #7f0e27;
+                bottom: 0;
+                content: '';
+                height: 100%;
+                left: 5px;
+                position: absolute;
+                width: 10px;
+            }
+        }
+        .fin-top {
+            top: -8px;
+            -webkit-transform: skew(35deg, 0deg);
+            transform: skew(35deg, 0deg);
+            &:before {
+                -webkit-transform: skew(40deg, 0deg);
+                transform: skew(40deg, 0deg);
+            }
+        }
+        .fin-bottom {
+            bottom: -8px;
+            -webkit-transform: skew(-35deg, 0deg);
+            transform: skew(-35deg, 0deg);
+            &:before {
+                -webkit-transform: skew(-40deg, 0deg);
+                transform: skew(-40deg, 0deg);
+            }
+        }
+        .faya {
+            display: block;
+            height: 100%;
+            left: -33px;
+            overflow: hidden;
+            position: absolute;
+            width: 30px;
+            &:before {
+                background-color: #f45224;
+                border-radius: 100%;
+                display: block;
+                content: '';
+                height: 15px;
+                left: 0;
+                position: absolute;
+                top:0;
+                width: 220px;
+                -webkit-animation: vrouming 200ms infinite;
+                animation: vrouming 200ms infinite;
+            }
+            &:after {
+                background-color: #ffedd5;
+                border-radius: 100%;
+                content: '';
+                display: block;
+                height: 7px;
+                left: 10px;
+                position: absolute;
+                width: 220px;
+                top: 4px;
+                -webkit-animation: vrouming 200ms infinite;
+                animation: vrouming 200ms infinite;
+            }
+        }
+        .wastes {
+            height: 200%;
+            left: -53px;
+            position: absolute;
+            top: -10px;
+            width: 50px;
+            span {
+                background-color: rgba(255, 255, 255, 0.5);
+                height: 1px;
+                position: absolute;
+                right: 0;
+                width: 3px;
+                $animation: wasting;
+                @for $i from 1 through 5 {
+                    @if $i % 2 != 0 {
+                        $animation: wasting;
+                    } @else {
+                        $animation: wasting2;
+                    }
+                    &:nth-child(#{$i}) {
+                        top: 13px + ($i * 2);
+                        -webkit-animation: $animation 500ms infinite 100ms * $i;
+                        animation: $animation 500ms infinite 100ms * $i;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -118,21 +118,34 @@ class Nav extends React.Component {
     // mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? true : false,
 
     return (
-      <header id="Nav">
+      <header id="Nav" className="mb-4">
         <nav className="navbar navbar-expand-lg navbar-dark">
           <button id="toggle-menu" className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span></span>
             <span></span>
             <span></span>
           </button>
+          <div className="scene">
+            <div className="rocket">
+              <div className="rocket-body">
+                <div className="fin-top"></div>
+                <div className="fin-bottom"></div>
+                <div className="faya"></div>
+                <div className="wastes">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="javascript:void(0);" className="decoy-hover"></a>
           <NavLink to="/" id="home" className="navbar-brand m-auto mr-lg-4">
-              inkrest
+            <span>inkrest</span>
           </NavLink>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
+            <ul className="navbar-nav custom-nav">
               <li className="nav-item">
                 <NavLink to="/products" className="nav-link fadein" activeClassName="active">
-                  Catalogue
+                    Catalogue
                 </NavLink>
               </li>
               <li className="nav-item">
@@ -182,7 +195,7 @@ class Nav extends React.Component {
                       </div>
                       <div className="row">
                         <div className="col-12 text-center mb-4">
-                          <a onClick={ this.connection } href="javascript:void(0)" className="btn btn-black fadein">Connexion</a>
+                          <a onClick={ this.connection } href="javascript:void(0)" className="btn btn-violet fadein">Connexion</a>
                         </div>
                       </div>
                       <div className="row">
@@ -210,7 +223,7 @@ class Nav extends React.Component {
                       </div>
                       <div className="row">
                         <div className="col-12 text-center mb-3">
-                          <NavLink to='/account' className="btn btn-black fadein">
+                          <NavLink to='/account' className="btn btn-violet fadein">
                             Mon compte
                           </NavLink>
                         </div>
