@@ -12,7 +12,7 @@ class Basket extends React.Component {
     return (
       <section id="Basket" className="Root">
         <Nav/>
-        <div className="container-fluid">
+        <div className="container-fluid blockheader">
           <div className="row">
             <div className="col-12">
               <h1>Basket</h1>

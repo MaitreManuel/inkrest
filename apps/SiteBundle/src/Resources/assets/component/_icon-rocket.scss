@@ -12,10 +12,8 @@
 .rocket {
     left: 22px;
     position: absolute;
-    top: 30px;
+    top: 35px;
     z-index: 20;
-    // -webkit-animation: orbit 2s linear infinite;
-    // animation: orbit 2s linear infinite;
     -webkit-transform: rotate(-35deg);
     transform: rotate(-35deg);
     .rocket-body {

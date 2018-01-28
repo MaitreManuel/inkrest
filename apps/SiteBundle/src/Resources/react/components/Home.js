@@ -12,7 +12,7 @@ class Home extends React.Component {
     return (
       <section id="Home">
         <Nav/>
-        <div className="container-fluid">
+        <div className="container-fluid blockheader">
           <div className="row">
             <div className="col-12">
               <h1>Home</h1>

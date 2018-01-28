@@ -12,7 +12,7 @@ class Product extends React.Component {
     return (
       <section id="Product">
         <Nav/>
-        <div className="container-fluid">
+        <div className="container-fluid blockheader">
           <div className="row">
             <div className="col-12">
               <h1>Catalogue</h1>

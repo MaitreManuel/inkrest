@@ -12,7 +12,7 @@ class Account extends React.Component {
     return (
       <section id="Account">
         <Nav/>
-        <div className="container-fluid">
+        <div className="container-fluid blockheader">
           <div className="row">
             <div className="col-12">
               <h1>Account</h1>

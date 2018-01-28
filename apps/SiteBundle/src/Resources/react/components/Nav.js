@@ -4,6 +4,18 @@ import 'whatwg-fetch';
 import './../../config.js';
 import './../../assets/js/functions.js';
 
+const toggle_menu = (trigger) => {
+  var this_class = 'open',
+    toggle = document.getElementById('toggle-menu'),
+    header = document.querySelector('header#Nav');
+
+  toggle.classList.toggle(this_class);
+  header.classList.toggle(this_class);
+
+  if (toggle.classList.contains(this_class) && trigger === 'ort_chg') {
+    toggle.classList.toggle(this_class);
+  }
+};
 
 class Nav extends React.Component {
   constructor(props) {
@@ -119,8 +131,8 @@ class Nav extends React.Component {
 
     return (
       <header id="Nav" className="mb-4">
-        <nav className="navbar navbar-expand-lg navbar-dark">
-          <button id="toggle-menu" className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <nav className="navbar navbar-expand-lg navbar-dark custom-nav">
+          <button onClick={ () => toggle_menu() } id="toggle-menu" className="navbar-toggler" type="button" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span></span>
             <span></span>
             <span></span>
@@ -137,15 +149,14 @@ class Nav extends React.Component {
               </div>
             </div>
           </div>
-          <a href="javascript:void(0);" className="decoy-hover"></a>
           <NavLink to="/" id="home" className="navbar-brand m-auto mr-lg-4">
             <span>inkrest</span>
           </NavLink>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav custom-nav">
+          <div className="navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
               <li className="nav-item">
                 <NavLink to="/products" className="nav-link fadein" activeClassName="active">
-                    Catalogue
+                  Catalogue
                 </NavLink>
               </li>
               <li className="nav-item">
@@ -167,7 +178,7 @@ class Nav extends React.Component {
             <ul className="navbar-nav ml-lg-auto">
               <li className="nav-item">
                 <NavLink to="/basket" className="nav-link fadein mr-3" style={{marginTop: '0.4em'}}>
-                  <i className="icon-basket icons fa-2x"></i>
+                  <i className="icon-basket fa-2x"></i>
                 </NavLink>
               </li>
               { logged === false &&

@@ -3,9 +3,46 @@ header#Nav {
     height: 81px;
     -webkit-transition: background-color .5s ease-in;
     transition: background-color .5s ease-in;
-    .decoy-hover:before {
+    @media all and (max-width: 991px) {
+        overflow: hidden;
+        -webkit-transition: height .2s linear;
+        transition: height .2s linear;
+        nav.navbar {
+            height: 77px;
+        }
+        #navbarNav {
+            opacity: 0;
+            -webkit-transition: opacity .5s ease-in;
+            transition: opacity .5s ease-in;
+            -webkit-transition-delay: .25s;
+            transition-delay: .25s;
+        }
+    }
+    &.open {
+        @media all and (max-width: 991px) {
+            height: 365px;
+            nav.navbar {
+                height: 361px;
+            }
+            #navbarNav {
+                margin-top: 25px;
+                opacity: 1;
+                #login {
+                    margin-left: auto !important;
+                }
+                .navbar-nav.ml-lg-auto {
+                    flex-direction: row;
+                    margin-top: 20px;
+                }
+                .nav-item {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+    nav:before {
         background-color: $white;
-        bottom: -2px;
+        bottom: 0;
         content: "";
         height: 2px;
         left: 0;
@@ -16,33 +53,120 @@ header#Nav {
         transform: scaleX(0);
         -webkit-transition: all .5s ease-in-out 0s;
         transition: all .5s ease-in-out 0s;
+        @media all and (max-width: 991px) {
+            bottom: -4px;
+        }
     }
     &:hover {
         background-color: $black;
-        .decoy-hover {
+        nav {
             cursor: default;
         }
-        .decoy-hover:before {
+        nav:before {
             visibility: visible;
             -webkit-transform: scaleX(1);
             transform: scaleX(1);
         }
     }
     .custom-nav {
+        #toggle-menu {
+            position: absolute;
+            right: 15px;
+            top: 23px;
+        }
+        .navbar-brand {
+            font-size: 32px;
+            @media all and (min-width: 992px) {
+                margin-left: 85px !important;
+            }
+            @media all and (max-width: 991px) {
+                margin-top: 4px !important;
+            }
+        }
         .nav-item {
             margin-left: 5px;
-            &:hover {
-            }
         }
-        .nav-link {
-            padding-right: 1.25rem;
-            padding-left: 1.25rem;
-            &.active {
-
+        .navbar-nav:not(.ml-lg-auto) {
+            .nav-link {
+                padding-right: 1.25rem;
+                padding-left: 1.25rem;
+                &:hover:not(.active) {
+                    -webkit-animation: colorhover 1s infinite alternate;
+                    animation: colorhover 1s infinite alternate;
+                }
+                &.active {
+                    border-bottom: 1px solid $white;
+                }
             }
         }
     }
-    .navbar-brand {
-        margin-left: 85px !important;
-    }
+}
+#Nav {
+   z-index: 9;
+   .navbar-toggler {
+       background-color: transparent;
+       border: none;
+       cursor: pointer;
+       height: 40px;
+       width: 30px;
+       -webkit-transform: rotate(0deg);
+       transform: rotate(0deg);
+       -webkit-transition: transform .5s ease-in-out;
+       transition: transform .5s ease-in-out;
+       @media (min-width: 992px) {
+           .navbar-toggler {
+               display: none;
+           }
+       }
+       @media all and (max-width: 991px) {
+           color: $white;
+           display: block;
+       }
+       &:focus {
+           outline: none;
+       }
+       &.open span:nth-child(1) {
+           left: -5px;
+           top: 7px;
+           -webkit-transform: rotate(-45deg);
+           transform: rotate(-45deg);
+       }
+       &.open span:nth-child(2) {
+           width: 0%;
+           opacity: 0;
+       }
+       &.open span:nth-child(3) {
+           left: -5px;
+           -webkit-transform: rotate(45deg);
+           transform: rotate(45deg);
+       }
+       span {
+           background: $white;
+           display: block;
+           height: 2px;
+           left: 0;
+           opacity: 1;
+           position: absolute;
+           width: 100%;
+           -webkit-transform: rotate(0deg);
+           transform: rotate(0deg);
+           -webkit-transition: .25s ease-in-out;
+           transition: .25s ease-in-out;
+       }
+       span:nth-child(1) {
+         top: 8px;
+         -webkit-transform-origin: right center;
+         transform-origin: right center;
+       }
+       span:nth-child(2) {
+         top: 18px;
+         -webkit-transform-origin: right center;
+         transform-origin: right center;
+       }
+       span:nth-child(3) {
+         top: 28px;
+         -webkit-transform-origin: right center;
+         transform-origin: right center;
+       }
+   }
 }
