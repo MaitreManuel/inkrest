@@ -7,45 +7,25 @@ use Symfony\Component\HttpFoundation\Response;
 $app->get('/', function () {
     return new Response('
         <h1> Index of inkrest/ </h1>
-        <br/>
-        <table style="font-size:18px;text-align:center;width:300px;">
-            <tr>
-                <th style="width:33,33333%;">Method</th>
-                <th style="width:33,33333%;">API Route</th>
-                <th style="width:33,33333%;">Access</th>
-            </tr>
-            <tr>
-                <td>GET</td>
-                <td>/</td>
-                <td><a href="http://api.inkrest.fr/">&#10138;</a></td>
-            </tr>
-            <tr>
-                <td>GET</td>
-                <td>/users</td>
-                <td><a href="http://api.inkrest.fr/users" target="_blank">&#10138;</a></td>
-            </tr>
-            <tr>
-                <td>GET</td>
-                <td>/users/{id}</td>
-                <td><a href="http://api.inkrest.fr/users/7" target="_blank">&#10138;</a></td>
-            </tr>
-            <tr>
-                <td>POST</td>
-                <td>/users/create</td>
-                <td><a href="http://api.inkrest.fr/users/create" target="_blank">&#10138;</a></td>
-            </tr>
-            <tr>
-                <td>POST</td>
-                <td>/users/connect</td>
-                <td><a href="http://api.inkrest.fr/users/connect" target="_blank">&#10138;</a></td>
-            </tr>
-            <tr>
-                <td>POST</td>
-                <td>/users/disconnect</td>
-                <td><a href="http://api.inkrest.fr/users/disconnect" target="_blank">&#10138;</a></td>
-            </tr>
-        </table>
+        <a href="http://inkrest.fr/">Front-office here</a>
     ');
+});
+
+$app->post('/creation', function(Request $request) use ($app) {
+    $creation = "";
+    $asker = $request->get('mail');
+    $asker_token = $request->get('token');
+    if(!empty($asker) && !empty($asker_token)) {
+        if(strcmp($asker, $to_update) !== 0) {
+            $response = $app['dao.user']->can_access_admin($asker, $asker_token);
+        } else {
+            $response = $app['dao.user']->can_access($asker, $asker_token);
+        }
+    } else {
+        throw new RuntimeException("Cannot take empty or null value for the asker \"mails\", asker \"token\" or data parameter");
+    }
+
+    return new JsonResponse(array('mail' => $mail, 'token' => $token));
 });
 
 $app->get('/users/{asker}/{asker_token}', function ($asker, $asker_token) use ($app) {
@@ -90,8 +70,9 @@ $app->post('/users/create', function (Request $request) use ($app) {
     $mail = $request->get('mail');
     $password = $request->get('password');
     $is_admin = $request->get('is_admin');
+    $birthday = $request->get('birthday');
 
-    $response = $app['dao.user']->create($firstname, $lastname, $mail, $password, $is_admin);
+    $response = $app['dao.user']->create($firstname, $lastname, $mail, $password, $is_admin, $birthday);
 
     return new JsonResponse($response);
 });

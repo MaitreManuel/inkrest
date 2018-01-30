@@ -55,6 +55,7 @@ class User {
             'lastname' => $row['lastname'],
             'mail' => $row['mail'],
             'is_admin' => $row['is_admin'],
+            'birthday' => $row['birthday'],
         );
 
         return $user;
@@ -135,7 +136,8 @@ class User {
 
              if(strcmp($user['account_status'], "active") !== 0) {
                  $result = $this->response->unauthorized("Your account is not active, you can't make request");
-             } else if(strcmp($user['is_admin'], "true") === 0) {
+             }
+             else if(strcmp($user['is_admin'], "true") === 0) {
                  $user = $this->findByMail($mail);
                  $token = $user['token'];
                  $token_date = date_create($user['token_date']);
@@ -145,7 +147,6 @@ class User {
                  $datetime1 = new \DateTime($user['token_date']);
                  $datetime2 = new \DateTime(date('Y-m-d H:i:s'));
                  $interval = $datetime1->diff($datetime2);
-                 var_dump($interval->format('%h'));die();
 
                  if(strcmp($asker_token, $token) === 0) {
                      if(intval($interval->format('%h')) < 6) {
@@ -227,7 +228,7 @@ class User {
         return $result;
     }
 
-    public function create($firstname, $lastname, $mail, $password, $is_admin) {
+    public function create($firstname, $lastname, $mail, $password, $is_admin, $birthday) {
         $result = "";
 
         if(empty($firstname)) {
@@ -238,6 +239,8 @@ class User {
             $result = $this->response->bad_request("Cannot take empty or null value for the \"password\" parameter");
         } else if(empty($is_admin)) {
             $result = $this->response->bad_request("Cannot take empty or null value for the \"is_admin\" parameter");
+        } else if(empty($birthday)) {
+            $result = $this->response->bad_request("Cannot take empty or null value for the \"birthday\" parameter");
         } else {
             $if_exist = $this->findByMail($mail);
 
@@ -250,6 +253,7 @@ class User {
                     'lastname' => $lastname,
                     'mail' => $mail,
                     'is_admin' => $is_admin,
+                    'birthday' => date($birthday),
                     'hashedPassword' => $encode_pwd['hashedPassword'],
                     'salt' => $encode_pwd['salt'],
                     'account_status' => 'active'

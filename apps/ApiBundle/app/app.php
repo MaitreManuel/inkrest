@@ -14,3 +14,7 @@ $app->register(new Silex\Provider\DoctrineServiceProvider());
 $app['dao.user'] = function ($app) {
     return new ApiBundle\Model\User($app['db']);
 };
+
+$app['dao.creation'] = function ($app) {
+    return new ApiBundle\Model\Creation($app['db']);
+};
