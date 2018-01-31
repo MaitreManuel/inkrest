@@ -12,20 +12,27 @@ $app->get('/', function () {
 });
 
 $app->post('/creation', function(Request $request) use ($app) {
-    $creation = "";
     $asker = $request->get('mail');
     $asker_token = $request->get('token');
-    if(!empty($asker) && !empty($asker_token)) {
-        if(strcmp($asker, $to_update) !== 0) {
-            $response = $app['dao.user']->can_access_admin($asker, $asker_token);
+
+    $name = $request->get('name');
+    $description = $request->get('description');
+    $format = $request->get('format');
+    $anchors = $request->get('anchors');
+    $image = $request->get('image');
+
+    if(!empty($asker) && !empty($asker_token) && !empty($name) && !empty($description) && !empty($format) && !empty($anchors) && !empty($image)) {
+        $access = $app['dao.user']->can_access($asker, $asker_token);
+        if(strcmp($access['status'], "success") === 0) {
+            $creation = $app['dao.creation']->addCreation($asker, $name, $description, $format, $anchors, $image);
         } else {
-            $response = $app['dao.user']->can_access($asker, $asker_token);
+            $creation = $access;
         }
     } else {
-        throw new RuntimeException("Cannot take empty or null value for the asker \"mails\", asker \"token\" or data parameter");
+        throw new RuntimeException("Cannot take empty or null value for the asker \"mails\", asker \"token\" or data parameters");
     }
 
-    return new JsonResponse(array('mail' => $mail, 'token' => $token));
+    return new JsonResponse($creation);
 });
 
 $app->get('/users/{asker}/{asker_token}', function ($asker, $asker_token) use ($app) {

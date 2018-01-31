@@ -32,4 +32,21 @@ class Creation {
         $this->db = $db;
         $this->response = new Response();
     }
+
+    public function addCreation($author, $name, $description, $format, $anchors, $image)
+    {
+        $values = array(
+            'author' => $author,
+            'name' => $name,
+            'description' => $description,
+            'format' => $format,
+            'anchors' => $anchors,
+            'image' => $image,
+            'nbBuy' => 0,
+            'status' => 'need_approval'
+        );
+        $result = $this->db->insert('item', $values);
+
+        return $result;
+    }
 }
