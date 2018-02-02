@@ -3,6 +3,16 @@
     -webkit-transition: background-color .2s ease-in, color .2s ease-in, fill .2s ease-in, border .2s ease-in;
     transition: background-color .2s ease-in, color .2s ease-in, fill .2s ease-in, border .2s ease-in;
 }
+@-webkit-keyframes rotate_earth {
+    0% { background-position: 0px -2px; }
+    50% { background-position: 400px -2px; }
+    100% { background-position: 800px -2px; }
+}
+@keyframes rotate_earth {
+    0% { background-position: 0px -2px; }
+    50% { background-position: 400px -2px; }
+    100% { background-position: 800px -2px; }
+}
 @-webkit-keyframes colorhover {
     from {color: rgba($white, .5);}
     to {color: white;}

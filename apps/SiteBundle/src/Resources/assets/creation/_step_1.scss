@@ -1,0 +1,22 @@
+.step_1 {
+    .control {
+        margin-top: -75px;
+        .cancel, .valid {
+            text-decoration: none;
+            -webkit-transition: all .2s ease-in;
+            transition: all .2s ease-in;
+        }
+        .cancel {
+            color: red;
+            &:hover {
+                color: darkred;
+            }
+        }
+        .valid {
+            color: #84da2f;
+            &:hover {
+                color: green;
+            }
+        }
+    }
+}

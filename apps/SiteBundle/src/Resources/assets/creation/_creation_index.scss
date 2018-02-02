@@ -1,0 +1,136 @@
+@import "step_1";
+
+#Creation {
+    #btn-import {
+        -webkit-transition: all .2s ease-in;
+        transition: all .2s ease-in;
+        input[type="file"] {
+            display: none;
+        }
+    }
+    #preview {
+        width: 720px;
+        -webkit-transition: all .2s ease-in;
+        transition: all .2s ease-in;
+    }
+    .btn {
+        position: relative;
+        z-index: 2;
+    }
+    .hide {
+        -webkit-transform: scale(.01) !important;
+        transform: scale(.01) !important;
+    }
+    .miniature {
+        height: 182px;
+        width: 300px;
+        -webkit-transition: all .2s ease-in;
+        transition: all .2s ease-in;
+    }
+    .scene_steps {
+        left: 50%;
+        top: -75px;
+        position: absolute;
+        z-index: 1;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        -webkit-transition: all .2s ease-in;
+        transition: all .2s ease-in;
+        @media all and (min-width: 992px) {
+            top: -175px;
+        }
+        @media all and (max-width: 991px) {
+            top: -75px;
+        }
+        .wrapper-rocket {
+            position: absolute;
+            @-webkit-keyframes rotate {
+                0% { -webkit-transform:rotate(-35deg); }
+                100% { -webkit-transform:rotate(325deg); }
+            }
+            @keyframes rotate {
+                0% { transform:rotate(-35deg); }
+                100% { transform:rotate(325deg); }
+            }
+            -webkit-animation: rotate 10s linear infinite;
+            animation: rotate 10s linear infinite;
+            @media all and (min-width: 992px) {
+                height: 400px;
+                width: 400px;
+            }
+            @media all and (max-width: 991px) {
+                height: 200px;
+                width: 200px;
+            }
+        }
+        .rocket {
+            left: 0;
+            top: 0;
+            .rocket-body {
+                -webkit-animation: none;
+                animation: none;
+            }
+        }
+    }
+    .show {
+        -webkit-transform: scale(1) !important;
+        transform: scale(1) !important;
+    }
+}
+#earth_holder {
+    z-index: 1;
+    @media all and (min-width: 992px) {
+        border-radius: 400px;
+        height: 400px;
+        width: 400px;
+    }
+    @media all and (max-width: 991px) {
+        border-radius: 200px;
+        height: 200px;
+        width: 200px;
+    }
+    #earth {
+        //noinspection CssUnknownTarget
+        background: url("/../public/img/earth_nc.jpg") 0px 0px;
+        position: absolute;
+        z-index: 2;
+        -webkit-animation: rotate_earth 40s linear infinite;
+        animation: rotate_earth 40s linear infinite;
+        -webkit-transform: rotate(20deg);
+        transform: rotate(20deg);
+        @media all and (min-width: 992px) {
+            background-size: 800px;
+            border-radius: 400px;
+            height: 400px;
+            width: 400px;
+        }
+        @media all and (max-width: 991px) {
+            background-size: 400px;
+            border-radius: 200px;
+            height: 200px;
+            width: 200px;
+        }
+    }
+    #earth_ball {
+        border-radius: 400px;
+        filter: alpha(opacity=74);
+        height: 400px;
+        opacity: 0.74;
+        position: absolute;
+        width: 400px;
+        z-index: 3;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=74)";
+        -webkit-box-shadow: inset 40px -40px 80px #000, inset 20px -20px 100px #000;
+        box-shadow: inset 40px -40px 80px #000, inset 20px -20px 100px #000;
+        @media all and (min-width: 992px) {
+            border-radius: 400px;
+            height: 400px;
+            width: 400px;
+        }
+        @media all and (max-width: 991px) {
+            border-radius: 200px;
+            height: 200px;
+            width: 200px;
+        }
+    }
+}
