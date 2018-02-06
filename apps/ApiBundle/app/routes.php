@@ -11,6 +11,12 @@ $app->get('/', function () {
     ');
 });
 
+$app->get('/format', function () use ($app) {
+    $formats = $app['dao.format']->findAll();
+
+    return new JsonResponse($formats);
+});
+
 $app->post('/creation', function(Request $request) use ($app) {
     $asker = $request->get('mail');
     $asker_token = $request->get('token');

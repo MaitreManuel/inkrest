@@ -12,12 +12,23 @@ a.btn {
             color: $white;
         }
     }
+    &.btn-green {
+        background-color: $transparent;
+        border: 1px solid $white;
+        color: $white;
+        &:hover {
+            background-color: $green;
+            border: 1px solid $green;
+            color: $white;
+        }
+    }
     &.btn-red {
-        border: 1px solid $red;
-        background-color: $white;
-        color: $red;
+        background-color: $transparent;
+        border: 1px solid $white;
+        color: $white;
         &:hover {
             background-color: $red;
+            border: 1px solid $red;
             color: $white;
         }
     }

@@ -93,6 +93,11 @@ class Nav extends React.Component {
       params = '',
       data = '';
 
+    localStorage.removeItem('firstname');
+    localStorage.removeItem('lastname');
+    localStorage.removeItem('mail');
+    localStorage.removeItem('token');
+
     params = {
       mail: localStorage.getItem('mail')
     };
@@ -108,10 +113,7 @@ class Nav extends React.Component {
       .then((response) => response.json())
       .then((response) => {
         if(response.status === 'success') {
-          localStorage.removeItem('firstname');
-          localStorage.removeItem('lastname');
-          localStorage.removeItem('mail');
-          localStorage.removeItem('token');
+
           me.setState({ logged: false });
         }
       });

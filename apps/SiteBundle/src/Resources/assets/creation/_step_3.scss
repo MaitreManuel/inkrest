@@ -1,0 +1,28 @@
+$fat: 8px;
+$skinny: 4px;
+
+.step_3 {
+    textarea {
+        height: 100px !important;
+        resize: none;
+        &::-webkit-scrollbar {
+            width: $fat;
+        }
+        &::-webkit-scrollbar-track {
+            border: 0 solid $violet;
+            &:horizontal { border-bottom-width: 1px; }
+            &:vertical { border-right-width: 1px; }
+        }
+        &::-webkit-scrollbar-thumb {
+            border: 0px solid $violet;
+            &:horizontal {
+                border-bottom-width: $skinny;
+                &:hover { border-bottom-width: $fat; }
+            }
+            &:vertical {
+                border-right-width: $skinny;
+                &:hover { border-right-width: $fat; }
+            }
+        }
+    }
+}

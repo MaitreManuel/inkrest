@@ -3,7 +3,9 @@
     const url = 'http://api.inkrest.fr';            // only value to change if need
 
     return {
-      user  : {
+      creation  : url +'/creation',
+      format    : url +'/format',
+      user      : {
         all             : url +'/users/',
         connect         : url +'/users/connect',
         create          : url +'/users/create',

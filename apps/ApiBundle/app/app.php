@@ -18,3 +18,7 @@ $app['dao.user'] = function ($app) {
 $app['dao.creation'] = function ($app) {
     return new ApiBundle\Model\Creation($app['db']);
 };
+
+$app['dao.format'] = function ($app) {
+    return new ApiBundle\Model\Format($app['db']);
+};

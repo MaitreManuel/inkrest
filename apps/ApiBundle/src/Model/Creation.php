@@ -3,8 +3,6 @@
 namespace ApiBundle\Model;
 
 use Doctrine\DBAL\Connection;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Security\Core\Exception\RuntimeException;
 
 use ApiBundle\Service\Response;
 
