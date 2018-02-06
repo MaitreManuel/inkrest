@@ -32,7 +32,18 @@ class History extends React.Component {
                   <h3 className="vertical-timeline-element-title">Digitalisation</h3>
                   <h4 className="vertical-timeline-element-subtitle">Création d{'\''}une branche digitale</h4>
                   <p>
-                    Total Print ouvre une branche digitale de e-commerce pour vendre différentes impressions en ligne tout en créant un espace communautaire pour publier ses propres modèles. Cette branche se nommera inkrest.
+                    Total Print ouvre une branche digitale de e-commerce pour vendre différentes impressions en ligne tout en créant un espace communautaire pour publier ses propres modèles. Cette branche se nommera inkrest Elle s{'\''}inspirera des conquêtes spatiales pour établir son design et des idées de possibilités infinies !
+                  </p>
+                </VerticalTimelineElement>
+                <VerticalTimelineElement
+                  className="bt-green"
+                  date="4 Juillet 1997"
+                  iconStyle={{ background: 'rgb(0, 204, 0)', color: '#ffffff' }}
+                  icon={ <i className="icon-compass tmln-ico-size"></i> } >
+                  <h3 className="vertical-timeline-element-title">Conquête spatiale</h3>
+                  <h4 className="vertical-timeline-element-subtitle">La sonde Mars Pathfinder se pose sur Mars</h4>
+                  <p>
+                    Une telle découverte inspire le monde entier sur l{'\''}expension de l{'\''}univers dont Total Print.
                   </p>
                 </VerticalTimelineElement>
                 <VerticalTimelineElement
