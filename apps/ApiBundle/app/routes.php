@@ -17,6 +17,12 @@ $app->get('/format', function () use ($app) {
     return new JsonResponse($formats);
 });
 
+$app->get('/last_product', function () use ($app) {
+    $product = $app['dao.product']->findLast();
+
+    return new JsonResponse($product);
+});
+
 $app->post('/creation', function(Request $request) use ($app) {
     $asker = $request->get('mail');
     $asker_token = $request->get('token');

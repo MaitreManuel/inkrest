@@ -14,10 +14,12 @@
         -webkit-transition: all .2s ease-in;
         transition: all .2s ease-in;
         @media all and (min-width: 992px) {
-            width: 720px;
+            max-height: 436px;
+            max-width: 720px;
         }
         @media all and (max-width: 991px) {
-            width: 300px;
+            max-height: 181px;
+            max-width: 300px;
         }
     }
     .btn {
@@ -29,8 +31,8 @@
         transform: scale(.01) !important;
     }
     .miniature {
-        height: 182px;
-        width: 300px;
+        max-height: 181px;
+        max-width: 300px;
         -webkit-transition: all .2s ease-in;
         transition: all .2s ease-in;
     }

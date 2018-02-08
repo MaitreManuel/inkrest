@@ -38,7 +38,7 @@ class Creation extends React.Component {
       .then((response) => {
         let formatAll = '';
 
-        for (let i = 1  ; i < Object.keys(response).length ; i++ ) {
+        for (let i = 1  ; i < Object.keys(response).length + 1; i++ ) {
           let format = response[i];
 
           formatAll = formatAll.concat(
@@ -303,7 +303,16 @@ class Creation extends React.Component {
           })
             .then((response) => response.json())
             .then((response) => {
-              if(response.status === 'success') {
+              if(response.status === 'error') {
+                swal({
+                  title: 'Vous n\'êtes pas connecté ¯\\_(ツ)_/¯',
+                  text: 'Il faut recommencer si vous n\'êtes pas connecté !',
+                  type: 'error',
+                  confirmButtonText: '✔ Ok',
+                }).then(() => {
+                  window.location.reload();
+                });
+              } else {
                 me.changeStep(null, 'back_to_1');
                 me.setState({
                   anchors       : '',
@@ -312,6 +321,14 @@ class Creation extends React.Component {
                   formatAll     : '',
                   image         : '',
                   name          : '',
+                });
+                swal({
+                  title: 'Terminé !',
+                  text: 'Bravo vous avez bien importé votre création ! Vous allez être redirigé vers la page d\'accueil :)',
+                  type: 'success',
+                  confirmButtonText: '✔ Ok',
+                }).then(() => {
+                  window.location.href = 'http://inkrest.fr/';
                 });
               }
             });

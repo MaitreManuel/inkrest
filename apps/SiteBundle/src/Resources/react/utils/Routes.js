@@ -23,6 +23,7 @@ class Routes extends React.Component {
           <Route exact path="/history" component={ History }></Route>
           <Route exact path="/login" component={ Login }></Route>
           <Route exact path="/products" component={ Product }></Route>
+          <Route exact path="/product/:id" component={ Product }></Route>
           <Route exact path="/register" component={ Register }></Route>
           <Route component={ NotFound } />
         </Switch>

@@ -91,12 +91,7 @@ class Nav extends React.Component {
     var me = this,
       api = API(), // eslint-disable-line no-undef
       params = '',
-      data = '';
-
-    localStorage.removeItem('firstname');
-    localStorage.removeItem('lastname');
-    localStorage.removeItem('mail');
-    localStorage.removeItem('token');
+      data;
 
     params = {
       mail: localStorage.getItem('mail')
@@ -113,6 +108,10 @@ class Nav extends React.Component {
       .then((response) => response.json())
       .then((response) => {
         if(response.status === 'success') {
+          localStorage.removeItem('firstname');
+          localStorage.removeItem('lastname');
+          localStorage.removeItem('mail');
+          localStorage.removeItem('token');
 
           me.setState({ logged: false });
         }

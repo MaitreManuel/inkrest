@@ -5,6 +5,9 @@
     return {
       creation  : url +'/creation',
       format    : url +'/format',
+      product   : {
+        last      : url +'/last_product',
+      },
       user      : {
         all             : url +'/users/',
         connect         : url +'/users/connect',

@@ -22,3 +22,7 @@ $app['dao.creation'] = function ($app) {
 $app['dao.format'] = function ($app) {
     return new ApiBundle\Model\Format($app['db']);
 };
+
+$app['dao.product'] = function ($app) {
+    return new ApiBundle\Model\Product($app['db']);
+};

@@ -3,8 +3,8 @@ $skinny: 4px;
 
 #preview-anchors {
     img {
-        height: 220px;
-        width: 350px;
+        max-height: 220px;
+        max-width: 350px;
     }
 }
 .anchors {

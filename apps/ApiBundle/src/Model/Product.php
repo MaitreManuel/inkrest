@@ -6,7 +6,7 @@ use Doctrine\DBAL\Connection;
 
 use ApiBundle\Service\Response;
 
-class Format {
+class Product {
     /**
      * Database connection
      *
@@ -49,21 +49,16 @@ class Format {
         return $format;
     }
 
-    public function findAll() {
-        $formats = "";
+    public function findLast() {
+        $product = "";
 
-        $sql = "SELECT * FROM format";
-        $result = $this->db->fetchAll($sql);
+        $sql = "SELECT * FROM item ORDER BY id DESC LIMIT 3";
+        $product = $this->db->fetchAll($sql);
 
-        if(!$result) {
-            $formats = $this->response->bad_request("Formats not existing");
-        } else {
-            $formats = array();
-            foreach ($result as $row) {
-                $formats[$row['id']] = $this->buildFormat($row);
-            }
+        if(!$product) {
+            $product = $this->response->bad_request("Products not existing");
         }
 
-        return $formats;
+        return $product;
     }
 }
