@@ -13,11 +13,6 @@
             position: absolute;
             top: 50%;
             z-index: 3;
-            // @supports not (clip-path: inset(50% 0 0 0)) {
-            //     .ring-before, .ring-after, .ring-bigger-before, .ring-bigger-after {
-            //         display: none;
-            //     }
-            // }
             .ring-before, .ring-after, .ring-bigger-before, .ring-bigger-after {
                 content: "";
                 border-radius: 50%;
@@ -37,8 +32,8 @@
             }
             .ring-before, .ring-bigger-before {
                 z-index: 3;
-                -webkit-clip-path: inset(50% 0 0 0);
-                clip-path: inset(50% 0 0 0);
+                -webkit-clip-path: inset(35% 0 0 0);
+                clip-path: inset(35% 0 0 0);
             }
             .ring-after, .ring-bigger-after {
                 z-index: 1;

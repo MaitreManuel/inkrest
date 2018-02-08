@@ -139,7 +139,7 @@ class Home extends React.Component {
                 </div>
                 <div className="col-12 col-lg-6">
                   <div className="p-5 section-infos">
-                    <h4>Propulsez-vous et ajoutez votre création !</h4>
+                    <h4>Propulsez-vous et ajoutez vos créations !</h4>
                     <p className="mt-4">
                       Dans cette section, vous allez être guidé étape par étape pour publier vos créations et ainsi les proposer à notre communauté !
                       Pas d{'\''}inquiétudes, vos créations sont protégées par vos droits d{'\''}auteurs et notre législation !
@@ -173,7 +173,7 @@ class Home extends React.Component {
 " alt="History image"/>
                 </div>
               </div>
-              <div className="row justify-content-center my-5">
+              <div className="row justify-content-center my-5 section">
                 <div className="col-12 col-lg-6">
                   <div className="p-5 text-center section-infos">
                     <p className="mb-4">Une question, envoyez là nous !</p>

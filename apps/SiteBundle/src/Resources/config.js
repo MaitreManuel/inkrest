@@ -8,6 +8,7 @@
       product   : {
         all       : url +'/products',
         last      : url +'/last_product',
+        one       : url +'/product/',
       },
       user      : {
         all             : url +'/users/',

@@ -29,6 +29,12 @@ $app->get('/products', function () use ($app) {
     return new JsonResponse($product);
 });
 
+$app->get('/product/{id}', function ($id) use ($app) {
+    $product = $app['dao.product']->findOne($id);
+
+    return new JsonResponse($product);
+});
+
 $app->post('/creation', function(Request $request) use ($app) {
     $asker = $request->get('mail');
     $asker_token = $request->get('token');

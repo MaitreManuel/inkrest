@@ -51,6 +51,19 @@ class Product {
         return $produit;
     }
 
+    public function findOne($id) {
+        $product = "";
+
+        $sql = "SELECT * FROM item WHERE id=". $id;
+        $product = $this->db->fetchAll($sql);
+
+        if(!$product) {
+            $product = $this->response->bad_request("Product not existing");
+        }
+
+        return $product;
+    }
+
     public function findLast() {
         $product = "";
 
@@ -67,7 +80,7 @@ class Product {
     public function findAll() {
         $products = "";
 
-        $sql = "SELECT * FROM item";
+        $sql = "SELECT * FROM item ORDER BY id DESC";
         $result = $this->db->fetchAll($sql);
 
         if(!$result) {
