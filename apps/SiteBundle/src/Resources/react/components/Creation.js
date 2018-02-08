@@ -203,7 +203,7 @@ class Creation extends React.Component {
         html:
         '<div id="formats" class="container-fluid text-left">' +
           '<div id="preview-anchors" class="row justify-content-center my-3">' +
-            '<div class="col-12"></div>' +
+            '<div class="col-12">' +
               '<img src="'+ me.state.image +'" alt="Preview anchors" />' +
             '</div>' +
           '</div>' +

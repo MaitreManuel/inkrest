@@ -150,7 +150,7 @@ class Nav extends React.Component {
               </div>
             </div>
           </div>
-          <NavLink to="/" id="home" className="navbar-brand m-auto mr-lg-4">
+          <NavLink to="/home" id="home" className="navbar-brand m-auto mr-lg-4">
             <span>inkrest</span>
           </NavLink>
           <div className="navbar-collapse" id="navbarNav">

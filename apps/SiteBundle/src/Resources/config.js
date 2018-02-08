@@ -6,6 +6,7 @@
       creation  : url +'/creation',
       format    : url +'/format',
       product   : {
+        all       : url +'/products',
         last      : url +'/last_product',
       },
       user      : {

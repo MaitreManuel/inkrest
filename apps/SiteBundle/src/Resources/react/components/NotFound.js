@@ -16,7 +16,7 @@ class NotFound extends React.Component {
           <div className="text-slideup">
             <h3 className="second">Êtes-vous perdu ?</h3>
           </div>
-          <NavLink to="/" className="btn btn-transparent fadein">
+          <NavLink to="/home" className="btn btn-transparent fadein">
             <span>{ 'Page d\'accueil' }</span>
           </NavLink>
         </div>

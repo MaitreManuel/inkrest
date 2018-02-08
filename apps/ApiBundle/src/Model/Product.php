@@ -38,15 +38,17 @@ class Product {
      * @return Array
      */
     private function buildFormat(array $row) {
-        $format = array(
+        $produit = array(
             'id' => $row['id'],
+            'author' => $row['author'],
             'name' => $row['name'],
-            'dimensions' => $row['dimensions'],
-            'price' => $row['price'],
-            'iconPath' => $row['iconPath'],
+            'description' => $row['description'],
+            'format' => $row['format'],
+            'anchors' => $row['anchors'],
+            'image' => $row['image'],
         );
 
-        return $format;
+        return $produit;
     }
 
     public function findLast() {
@@ -60,5 +62,23 @@ class Product {
         }
 
         return $product;
+    }
+
+    public function findAll() {
+        $products = "";
+
+        $sql = "SELECT * FROM item";
+        $result = $this->db->fetchAll($sql);
+
+        if(!$result) {
+            $products = $this->response->bad_request("Products not existing");
+        } else {
+            $products = array();
+            foreach ($result as $row) {
+                $products[$row['id']] = $this->buildFormat($row);
+            }
+        }
+
+        return $products;
     }
 }
