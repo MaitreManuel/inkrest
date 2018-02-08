@@ -156,6 +156,7 @@ class Product extends React.Component {
                     <p>
                       { formats }
                     </p>
+                    <h5>Prix : 10€ / l'affiche</h5>
                   </div>
                 </div>
               </div>
