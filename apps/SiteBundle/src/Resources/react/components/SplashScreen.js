@@ -6,6 +6,7 @@ class SplashScreen extends React.Component {
   }
 
   componentDidMount() {
+    localStorage.setItem('cookie', 'oui');
     setTimeout(() => {
       window.location.href = 'http://inkrest.fr/home';
     }, 5000);

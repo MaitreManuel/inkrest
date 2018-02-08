@@ -11,11 +11,17 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
 
+    this.closeCookie = this.closeCookie.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
 
     this.state = {
       last_product       : [],
     };
+  }
+
+  closeCookie() {
+    localStorage.removeItem('cookie');
+    document.querySelector('.cookie').classList.add('d-none');
   }
 
   componentWillMount() {
@@ -187,6 +193,17 @@ class Home extends React.Component {
           </div>
         </div>
         <Footer/>
+        { localStorage.getItem('cookie') === 'oui' &&
+          <div className="cookie p-1 text-center">
+            <span className="text mx-5">
+              Attention ce site utilise des cookies !
+              <a href="https://www.subdelirium.com/generateur-de-mentions-legales/" target="_blank" className=" mx-5 fadein">
+                Voir les mentions légales.
+              </a>
+            </span>
+            <a onClick={ this.closeCookie } href="javascript:void(0);" className="btn btn-violet fadein mx-5">Fermer</a>
+          </div>
+        }
       </section>
     );
   }

@@ -54,6 +54,16 @@ body {
     -webkit-animation: space 20s linear infinite;
     animation: space 20s linear infinite;
 }
+.cookie {
+    background: $white;
+    bottom: 0;
+    height: 45px;
+    position: absolute;
+    width: 100vw;
+    .text {
+        color: $black;
+    }
+}
 #container {
     height: 100%;
     position: relative;
